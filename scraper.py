@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 logger = logging.getLogger("website_tracker")
 
-def fetch_url_with_retries(url, headers, timeout=15, max_retries=3, backoff_factor=2):
+def fetch_url_with_retries(url, headers, timeout=15, max_retries=3, backoff_factor=2, verify=True):
     """
     Fetches a URL using requests with exponential backoff retries for transient errors.
     """
@@ -20,8 +20,8 @@ def fetch_url_with_retries(url, headers, timeout=15, max_retries=3, backoff_fact
     for attempt in range(1, max_retries + 1):
         try:
             logger.info(f"Fetching URL: {url} (Attempt {attempt}/{max_retries})")
-            # verify=False is needed for some government/university portals with expired SSL certs
-            response = requests.get(url, headers=headers, timeout=timeout, verify=False)
+            # verify parameter controls SSL verification
+            response = requests.get(url, headers=headers, timeout=timeout, verify=verify)
             
             # Treat 5xx server errors as transient and retry
             if response.status_code >= 500:
@@ -53,7 +53,7 @@ class WebScraper:
         self.backoff_factor = config.get("retry_backoff_factor", 2)
 
 
-    def scrape_kpsc_notifications(self, site_config):
+    def scrape_kpsc_notifications(self, site_config, processed_subpages=None):
         """
         Scrapes Kerala Public Service Commission notifications.
         First parses the main table, follows links to gazette pages, and extracts PDF links.
@@ -62,7 +62,7 @@ class WebScraper:
         logger.info(f"Starting scraping for Kerala PSC notifications from {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+            url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
         )
         soup = BeautifulSoup(response.text, "html.parser")
         
@@ -95,6 +95,10 @@ class WebScraper:
                 continue
                 
             subpage_url = urljoin(url, subpage_href)
+            if processed_subpages is not None and subpage_url in processed_subpages:
+                logger.info(f"Skipping already processed KPSC subpage: {subpage_url}")
+                continue
+
             gazette_title = title_col.text.strip().replace('\n', ' ')
             gazette_title = re.sub(r'\s+', ' ', gazette_title)
             
@@ -103,8 +107,14 @@ class WebScraper:
             # Visit the subpage to find individual PDF attachments
             try:
                 sub_response = fetch_url_with_retries(
-                    subpage_url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+                    subpage_url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
                 )
+                
+                # Mark as processed immediately since fetch succeeded
+                if processed_subpages is not None:
+                    from datetime import datetime
+                    processed_subpages[subpage_url] = datetime.now().isoformat()
+
                 sub_soup = BeautifulSoup(sub_response.text, "html.parser")
                 
                 # Find all PDF links in subpage
@@ -252,7 +262,7 @@ class WebScraper:
                 })
         return items
 
-    def scrape_hse_kerala(self, site_config):
+    def scrape_hse_kerala(self, site_config, processed_subpages=None):
         """
         Scrapes Directorate of Higher Secondary Education, Kerala (HSE) Portal.
         Parses table rows and views their JSON AJAX endpoint to extract attachments.
@@ -261,7 +271,7 @@ class WebScraper:
         logger.info(f"Starting scraping for HSE Kerala portal from {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+            url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
         )
         soup = BeautifulSoup(response.text, "html.parser")
         
@@ -292,13 +302,23 @@ class WebScraper:
                 continue
                 
             view_url = urljoin(url, action_path)
+            if processed_subpages is not None and view_url in processed_subpages:
+                logger.info(f"Skipping already processed HSE view URL: {view_url}")
+                continue
+
             logger.info(f"Following HSE view path: {view_url} ({title[:50]}...)")
             
             # Visit the JSON view URL to get the attachments
             try:
                 sub_response = fetch_url_with_retries(
-                    view_url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+                    view_url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
                 )
+                
+                # Mark as processed immediately since fetch succeeded
+                if processed_subpages is not None:
+                    from datetime import datetime
+                    processed_subpages[view_url] = datetime.now().isoformat()
+
                 sub_data = sub_response.json()
                 modal_html = sub_data.get("form", "")
                 if modal_html:

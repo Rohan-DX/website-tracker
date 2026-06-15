@@ -1,5 +1,6 @@
 import os
 import re
+import time
 import logging
 import requests
 from datetime import datetime
@@ -94,6 +95,14 @@ class TelegramBot:
         try:
             logger.info(f"Sending message to Telegram chat {self.chat_id}...")
             r = requests.post(url, json=payload, timeout=15)
+            
+            # Handle rate limiting (HTTP 429)
+            if r.status_code == 429:
+                retry_after = r.json().get("parameters", {}).get("retry_after", 5)
+                logger.warning(f"Telegram rate limited. Retrying after {retry_after}s...")
+                time.sleep(retry_after)
+                r = requests.post(url, json=payload, timeout=15)
+
             if r.status_code == 200:
                 logger.info("Telegram message sent successfully.")
                 return True

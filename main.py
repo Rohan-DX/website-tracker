@@ -1,4 +1,5 @@
 import os
+import time
 import csv
 import json
 import logging
@@ -51,7 +52,9 @@ def load_state():
     default_state = {
         "last_run": None,
         "daily_summary_sent_date": None,
-        "seen_notifications": {}
+        "seen_notifications": {},
+        "pending_summary_notifications": [],
+        "processed_subpages": {}
     }
     if not os.path.exists(state_path):
         logger.info(f"State file {state_path} not found. Creating default state.")
@@ -63,18 +66,85 @@ def load_state():
             for key, val in default_state.items():
                 if key not in state:
                     state[key] = val
+            
+            # Migrate existing unsent notifications to the pending list if empty
+            if not state.get("pending_summary_notifications"):
+                pending = []
+                for notif_hash, notif in state.get("seen_notifications", {}).items():
+                    if not notif.get("sent_in_summary", False):
+                        pending.append(notif_hash)
+                state["pending_summary_notifications"] = pending
+
             return state
     except Exception as e:
         logger.error(f"Error reading state.json: {e}. Reverting to default state.")
         return default_state
 
 
-def save_state(state):
+def save_state(state, config=None):
     """
-    Saves state to state.json.
+    Saves state to state.json after performing a TTL and inactive-site purge.
     """
     state_path = "state.json"
     try:
+        # Perform pruning if config is provided
+        if config and "seen_notifications" in state:
+            active_site_ids = {site["id"] for site in config.get("websites", [])}
+            seen_notifs = state["seen_notifications"]
+            purged_notifs = {}
+            now = datetime.now()
+            ttl_days = 90
+            purged_ttl_count = 0
+            purged_site_count = 0
+            
+            for h, notif in seen_notifs.items():
+                site_id = notif.get("site_id")
+                # 1. Purge inactive site entries (e.g. mgu_results)
+                if site_id not in active_site_ids:
+                    purged_site_count += 1
+                    continue
+                
+                # 2. Purge entries older than 90 days
+                ts_str = notif.get("timestamp")
+                keep = True
+                if ts_str:
+                    try:
+                        ts = datetime.fromisoformat(ts_str)
+                        if ts.tzinfo is not None:
+                            ts = ts.replace(tzinfo=None)
+                        if (now - ts).days > ttl_days:
+                            keep = False
+                            purged_ttl_count += 1
+                    except Exception as e:
+                        logger.error(f"Error checking TTL for notification {h}: {e}")
+                
+                if keep:
+                    purged_notifs[h] = notif
+            
+            if purged_ttl_count > 0 or purged_site_count > 0:
+                logger.info(f"State pruning: removed {purged_site_count} inactive site entries and {purged_ttl_count} expired entries.")
+                state["seen_notifications"] = purged_notifs
+                
+                # Cleanup pending list for purged entries
+                if "pending_summary_notifications" in state:
+                    state["pending_summary_notifications"] = [
+                        h for h in state["pending_summary_notifications"] if h in purged_notifs
+                    ]
+            
+            # Prune processed subpages cache (TTL > 90 days)
+            if "processed_subpages" in state:
+                purged_subpages = {}
+                for url, ts_str in state["processed_subpages"].items():
+                    try:
+                        ts = datetime.fromisoformat(ts_str)
+                        if ts.tzinfo is not None:
+                            ts = ts.replace(tzinfo=None)
+                        if (now - ts).days <= ttl_days:
+                            purged_subpages[url] = ts_str
+                    except Exception:
+                        purged_subpages[url] = ts_str # Keep if unparseable
+                state["processed_subpages"] = purged_subpages
+
         with open(state_path, "w", encoding="utf-8") as f:
             json.dump(state, f, indent=2)
         logger.info("state.json updated successfully.")
@@ -140,7 +210,10 @@ def get_notification_hash(title, link):
     Generates a unique SHA256 hash for duplicate detection.
     """
     raw_str = f"{title}_{link or ''}"
-    return hashlib.sha256(raw_str.encode("utf-8")).hexdigest()
+    h = hashlib.sha256(raw_str.encode("utf-8")).hexdigest()
+    if len(h) != 64:
+        logger.warning(f"Unexpected hash length {len(h)} for: {raw_str[:80]}")
+    return h
 
 
 def run_daily_summary(state, config, bot):
@@ -169,10 +242,11 @@ def run_daily_summary(state, config, bot):
     # Collect notifications not yet summarized
     unsent_notifications = []
     seen_notifications = state.get("seen_notifications", {})
+    pending_hashes = state.get("pending_summary_notifications", [])
     
-    for notif_hash, notif in seen_notifications.items():
-        if not notif.get("sent_in_summary", False):
-            unsent_notifications.append(notif)
+    for notif_hash in pending_hashes:
+        if notif_hash in seen_notifications:
+            unsent_notifications.append(seen_notifications[notif_hash])
 
     if not unsent_notifications:
         logger.info("No new notifications to summarize today.")
@@ -213,9 +287,10 @@ def run_daily_summary(state, config, bot):
     success = bot.send_message(summary_msg)
     if success:
         logger.info("Daily summary sent successfully.")
-        # Mark all as sent
+        # Mark all as sent and clear pending list
         for notif in unsent_notifications:
             notif["sent_in_summary"] = True
+        state["pending_summary_notifications"] = []
         state["daily_summary_sent_date"] = current_date_str
     else:
         logger.error("Failed to send daily summary. Will retry in next execution.")
@@ -257,11 +332,11 @@ def main():
         try:
             items = []
             if site_type == "kpsc_notifications":
-                items = scraper.scrape_kpsc_notifications(site)
+                items = scraper.scrape_kpsc_notifications(site, state.get("processed_subpages"))
             elif site_type == "ugc_net":
                 items = scraper.scrape_ugc_net(site)
             elif site_type == "hse_kerala":
-                items = scraper.scrape_hse_kerala(site)
+                items = scraper.scrape_hse_kerala(site, state.get("processed_subpages"))
             elif site_type == "rss":
                 items = scraper.scrape_rss_feed(site)
             else:
@@ -296,43 +371,49 @@ def main():
                     state["seen_notifications"][notif_hash]["sent_in_summary"] = True
                     continue
 
+                # Add hash to pending summary notifications
+                if "pending_summary_notifications" not in state:
+                    state["pending_summary_notifications"] = []
+                state["pending_summary_notifications"].append(notif_hash)
+
                 # Run PDF downloading and parsing if configured
                 parsed_details = {}
                 pdf_download_configured = site.get("pdf_download", False)
                 pdf_url = item.get("pdf_url") or (link if link.lower().endswith(".pdf") else None)
                 
                 temp_pdf_path = None
-                if pdf_download_configured and pdf_url:
-                    temp_pdf_path = download_pdf(pdf_url, scraper.headers, scraper.timeout)
-                
-                # Extract text for keyword filters if PDF is available
-                pdf_text = ""
-                if temp_pdf_path:
-                    # Import dynamically inside method call or helper
-                    from pdf_parser import extract_text_from_pdf
-                    pdf_text = extract_text_from_pdf(temp_pdf_path) or ""
+                try:
+                    if pdf_download_configured and pdf_url:
+                        temp_pdf_path = download_pdf(pdf_url, scraper.headers, scraper.timeout)
+                    
+                    # Extract text for keyword filters if PDF is available
+                    pdf_text = ""
+                    if temp_pdf_path:
+                        # Import dynamically inside method call or helper
+                        from pdf_parser import extract_text_from_pdf
+                        pdf_text = extract_text_from_pdf(temp_pdf_path) or ""
 
-                # Keyword filtering
-                if not passes_keyword_filter(title, pdf_text, config.get("keywords")):
-                    # Delete temp file if skipped
+                    # Keyword filtering
+                    if not passes_keyword_filter(title, pdf_text, config.get("keywords")):
+                        continue
+
+                    # Proceed with detailed PDF parsing
+                    if temp_pdf_path:
+                        try:
+                            if site_type == "kpsc_notifications":
+                                parsed_details = parse_kpsc_pdf(temp_pdf_path, pdf_url, item.get("notification_url"))
+                            elif site_type == "ugc_net":
+                                parsed_details = parse_ugc_net_pdf(temp_pdf_path, title, pdf_url, item.get("notice_url"))
+                        except Exception as e:
+                            logger.error(f"Error parsing PDF fields: {e}")
+                finally:
+                    # Clean up temp file regardless of outcomes, errors, or loop continues
                     if temp_pdf_path and os.path.exists(temp_pdf_path):
-                        os.remove(temp_pdf_path)
-                    continue
-
-                # Proceed with detailed PDF parsing
-                if pdf_download_configured and pdf_url:
-                    try:
-                        if site_type == "kpsc_notifications":
-                            parsed_details = parse_kpsc_pdf(temp_pdf_path, pdf_url, item.get("notification_url"))
-                        elif site_type == "ugc_net":
-                            parsed_details = parse_ugc_net_pdf(temp_pdf_path, title, pdf_url, item.get("notice_url"))
-                    except Exception as e:
-                        logger.error(f"Error parsing PDF fields: {e}")
-                    finally:
-                        # Clean up temp file
-                        if temp_pdf_path and os.path.exists(temp_pdf_path):
+                        try:
                             os.remove(temp_pdf_path)
                             logger.debug(f"Removed temporary PDF file: {temp_pdf_path}")
+                        except Exception as err:
+                            logger.error(f"Failed to remove temp PDF file {temp_pdf_path}: {err}")
                 
                 # Format Telegram Notification
                 message_text = ""
@@ -379,6 +460,9 @@ def main():
                 logger.info(f"Sending Telegram Alert for notification: {title}")
                 bot.send_message(message_text)
                 
+                # Sleep to prevent Telegram rate limit issues
+                time.sleep(0.5)
+                
                 # Export to CSV
                 append_to_csv(csv_path, timestamp, site_id, title, link, parsed_details)
                 new_notifs_found += 1
@@ -395,7 +479,7 @@ def main():
     if not is_first_run:
         run_daily_summary(state, config, bot)
         
-    save_state(state)
+    save_state(state, config)
     logger.info(f"--- Finished Execution. New notifications processed: {new_notifs_found} ---")
 
 
