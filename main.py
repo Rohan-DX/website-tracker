@@ -158,6 +158,21 @@ def append_to_csv(csv_path, timestamp, site_id, title, link, details_dict):
     """
     file_exists = os.path.exists(csv_path)
     
+    # Check if the title + link already exists in the CSV
+    if file_exists:
+        try:
+            with open(csv_path, "r", encoding="utf-8") as f:
+                reader = csv.reader(f)
+                # Skip header if it exists
+                next(reader, None)
+                for row in reader:
+                    # Index 2 is Title, Index 3 is Link
+                    if len(row) >= 4 and row[2] == title and row[3] == link:
+                        logger.info(f"Notification already exists in CSV, skipping append: {title}")
+                        return
+        except Exception as e:
+            logger.error(f"Error checking duplicate in CSV: {e}")
+            
     # Flatten details dict into a readable string
     details_str = "; ".join([f"{k}: {v}" for k, v in details_dict.items() if v and v != "N/A"])
     
