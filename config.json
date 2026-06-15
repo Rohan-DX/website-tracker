@@ -1,0 +1,37 @@
+{
+  "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+  "request_timeout_seconds": 15,
+  "max_retries": 3,
+  "retry_backoff_factor": 2,
+  "daily_summary_time": "18:00",
+  "csv_export_path": "notifications.csv",
+  "keywords": {
+    "include": [],
+    "exclude": []
+  },
+  "websites": [
+    {
+      "id": "mgu_results",
+      "name": "Mahatma Gandhi University Results",
+      "url": "https://dsdc.mgu.ac.in/oldresult/result.php",
+      "type": "mgu_results",
+      "enabled": true
+    },
+    {
+      "id": "kpsc_notifications",
+      "name": "Kerala PSC Notifications",
+      "url": "https://www.keralapsc.gov.in/notifications",
+      "type": "kpsc_notifications",
+      "enabled": true,
+      "pdf_download": true
+    },
+    {
+      "id": "ugc_net_notices",
+      "name": "UGC NET Public Notices",
+      "url": "https://ugcnet.nta.nic.in/",
+      "type": "ugc_net",
+      "enabled": true,
+      "pdf_download": true
+    }
+  ]
+}
