@@ -8,8 +8,8 @@ It runs entirely on free tier services utilizing **GitHub Actions** for scheduli
 
 ## Features
 
-- **Multi-Site Monitoring**: Monitors MGU Results, Kerala PSC Notifications, and UGC NET Public Notices out-of-the-box.
-- **Dynamic Scrapers**: Support for MGU Old Result portal, KPSC Gazette/Notifications, UGC NET announcements, RSS feeds, and generic sites.
+- **Multi-Site Monitoring**: Monitors Kerala PSC Notifications and UGC NET Public Notices out-of-the-box.
+- **Dynamic Scrapers**: Support for KPSC Gazette/Notifications, UGC NET announcements, RSS feeds, and generic sites.
 - **Smart PDF Processing**: Downloads notice PDFs and extracts metadata fields (like Category, Post Name, Deadlines, and Pay Scales) using `pdfplumber` with fallback to `PyMuPDF`.
 - **Scanned PDF Support**: Handles scanned UGC NET PDFs elegantly by fallback parsing of date/session metadata from titles and upload URL structures.
 - **Telegram Channel Integration**: Formats beautiful alerts using Telegram's MarkdownV2 syntax with a robust regex-based escaping layer to avoid API crashes.
@@ -27,7 +27,7 @@ It runs entirely on free tier services utilizing **GitHub Actions** for scheduli
 project/
 │
 ├── main.py                # System entrypoint, orchestrates scraping and alert dispatch
-├── scraper.py             # Scraping modules for MGU, KPSC, UGC NET, RSS, and generic pages
+├── scraper.py             # Scraping modules for KPSC, UGC NET, RSS, and generic pages
 ├── telegram_bot.py        # Telegram Bot API client and message formatting engine
 ├── pdf_parser.py          # PDF text extraction and regex field extraction logic
 ├── config.json            # Configuration file for targets, keywords, and timeouts
@@ -73,7 +73,6 @@ Add more sites by modifying `config.json`. For example:
 ```
 
 Available `type` attributes:
-- `mgu_results` (MG University specific parsing)
 - `kpsc_notifications` (Kerala PSC Gazette and PDF parsing)
 - `ugc_net` (UGC NET Notice board and scanned PDF fallback)
 - `rss` (Generic RSS feed parser)

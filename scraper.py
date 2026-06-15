@@ -52,56 +52,6 @@ class WebScraper:
         self.max_retries = config.get("max_retries", 3)
         self.backoff_factor = config.get("retry_backoff_factor", 2)
 
-    def scrape_mgu_results(self, site_config):
-        """
-        Scrapes Mahatma Gandhi University results page.
-        """
-        url = site_config["url"]
-        logger.info(f"Starting scraping for MGU results from {url}")
-        
-        response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
-        )
-        soup = BeautifulSoup(response.text, "html.parser")
-        
-        results = []
-        # Find all anchor tags on the page
-        links = soup.find_all("a")
-        
-        for l in links:
-            href = l.get("href", "").strip()
-            text = l.text.strip().replace('\n', ' ')
-            text = re.sub(r'\s+', ' ', text)
-            
-            if not href or not text:
-                continue
-                
-            # Filter for links that represent actual results
-            is_result = (
-                "result_pdf" in href.lower() or 
-                "pareeksha.mgu.ac.in" in href.lower() or 
-                "teacheredu" in href.lower() or 
-                "result.php" in href.lower() or
-                "examination" in text.lower() or
-                "result" in text.lower()
-            )
-            # Exclude menu items, home page, or navigation
-            is_nav = (
-                text.lower() in ["home", "about", "contact", "sitemap", "gallery", "courses", "examinations", "results"] or
-                href == "result.php" or
-                href == "#"
-            )
-            
-            if is_result and not is_nav:
-                # Resolve relative URL
-                absolute_url = urljoin(url, href)
-                results.append({
-                    "result_title": text,
-                    "result_link": absolute_url
-                })
-                
-        logger.info(f"Found {len(results)} potential results on MGU site.")
-        return results
 
     def scrape_kpsc_notifications(self, site_config):
         """

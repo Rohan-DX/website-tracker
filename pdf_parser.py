@@ -28,7 +28,7 @@ def download_pdf(url, headers, timeout=30):
     """
     try:
         logger.info(f"Downloading PDF from: {url}")
-        r = requests.get(url, headers=headers, timeout=timeout, verify=False) # verify=False for MGU which has certificate issues
+        r = requests.get(url, headers=headers, timeout=timeout, verify=False) # verify=False for portals with SSL certificate issues
         if r.status_code == 200:
             temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=".pdf")
             temp_file.write(r.content)

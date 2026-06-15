@@ -11,13 +11,6 @@
   },
   "websites": [
     {
-      "id": "mgu_results",
-      "name": "Mahatma Gandhi University Results",
-      "url": "https://dsdc.mgu.ac.in/oldresult/result.php",
-      "type": "mgu_results",
-      "enabled": true
-    },
-    {
       "id": "kpsc_notifications",
       "name": "Kerala PSC Notifications",
       "url": "https://www.keralapsc.gov.in/notifications",

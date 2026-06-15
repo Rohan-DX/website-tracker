@@ -256,9 +256,7 @@ def main():
         
         try:
             items = []
-            if site_type == "mgu_results":
-                items = scraper.scrape_mgu_results(site)
-            elif site_type == "kpsc_notifications":
+            if site_type == "kpsc_notifications":
                 items = scraper.scrape_kpsc_notifications(site)
             elif site_type == "ugc_net":
                 items = scraper.scrape_ugc_net(site)
@@ -336,9 +334,7 @@ def main():
                 
                 # Format Telegram Notification
                 message_text = ""
-                if site_type == "mgu_results":
-                    message_text = bot.format_mgu_message({"result_title": title, "result_link": link})
-                elif site_type == "kpsc_notifications":
+                if site_type == "kpsc_notifications":
                     # Merge item details
                     kpsc_data = {
                         "post_name": title,
