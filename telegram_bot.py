@@ -2,6 +2,7 @@ import os
 import re
 import logging
 import requests
+from datetime import datetime
 
 logger = logging.getLogger("website_tracker")
 
@@ -22,6 +23,47 @@ def escape_link_url(url):
     if not url:
         return ""
     return str(url).replace("\\", "\\\\").replace(")", "\\)")
+
+def date_to_unix(date_str):
+    """
+    Parses various date string formats and returns a Unix timestamp.
+    """
+    if not date_str or date_str == "N/A":
+        return None
+    cleaned = date_str.strip()
+    
+    # 1. Extract date using regex
+    # Match DD.MM.YYYY or DD-MM-YYYY or DD/MM/YYYY
+    match_dmy = re.search(r"(\d{2})[./-](\d{2})[./-](\d{4})", cleaned)
+    if match_dmy:
+        day, month, year = map(int, match_dmy.groups())
+        try:
+            dt = datetime(year, month, day)
+            return int(dt.timestamp())
+        except Exception:
+            pass
+            
+    # Match YYYY-MM-DD or YYYY.MM.DD or YYYY/MM/DD
+    match_ymd = re.search(r"(\d{4})[./-](\d{2})[./-](\d{2})", cleaned)
+    if match_ymd:
+        year, month, day = map(int, match_ymd.groups())
+        try:
+            dt = datetime(year, month, day)
+            return int(dt.timestamp())
+        except Exception:
+            pass
+            
+    return None
+
+def format_telegram_time(date_str, format_str="D", fallback="N/A"):
+    """
+    Formats a date string into Telegram's native interactive tg://time link format.
+    """
+    ts = date_to_unix(date_str)
+    if ts:
+        escaped_fallback = escape_markdown_v2(date_str)
+        return f"![{escaped_fallback}](tg://time?unix={ts}&format={format_str})"
+    return escape_markdown_v2(fallback)
 
 class TelegramBot:
     def __init__(self, token=None, chat_id=None):
@@ -72,7 +114,11 @@ class TelegramBot:
         qualification = escape_markdown_v2(data.get("qualification") or "N/A")
         age_limit = escape_markdown_v2(data.get("age_limit") or "N/A")
         pay_scale = escape_markdown_v2(data.get("pay_scale") or "N/A")
-        last_date = escape_markdown_v2(data.get("last_date") or "N/A")
+        
+        last_date_str = data.get("last_date") or "N/A"
+        formatted_last_date = format_telegram_time(last_date_str, "D", last_date_str)
+        relative_last_date = format_telegram_time(last_date_str, "r", "")
+        last_date_display = f"{formatted_last_date} \\({relative_last_date}\\)" if relative_last_date else formatted_last_date
         
         pdf_url = escape_link_url(data.get("pdf_url"))
         notification_url = escape_link_url(data.get("notification_url"))
@@ -86,7 +132,7 @@ class TelegramBot:
             f"🗂️ *Category No:* `{category_number}`\n"
             f"🏢 *Department:* `{department}`\n"
             f"💰 *Pay Scale:* `{pay_scale}`\n"
-            f"📅 *Last Date:* `{last_date}`\n\n"
+            f"📅 *Last Date:* {last_date_display}\n\n"
             f"⚙️ *Qualifications:*\n{qualification}\n\n"
             f"👤 *Age Limit:*\n{age_limit}\n\n"
             f"📥 *PDF:* {pdf_link}\n"
@@ -100,10 +146,14 @@ class TelegramBot:
         Formats a UGC NET notice into a premium, rich Telegram MarkdownV2 message.
         """
         title = escape_markdown_v2(data.get("title") or "N/A")
-        date = escape_markdown_v2(data.get("date") or "N/A")
         summary = escape_markdown_v2(data.get("summary") or "N/A")
         important_dates = escape_markdown_v2(data.get("important_dates") or "N/A")
         examination_session = escape_markdown_v2(data.get("examination_session") or "N/A")
+        
+        date_str = data.get("date") or "N/A"
+        formatted_date = format_telegram_time(date_str, "D", date_str)
+        relative_date = format_telegram_time(date_str, "r", "")
+        date_display = f"{formatted_date} \\({relative_date}\\)" if relative_date else formatted_date
         
         pdf_url = escape_link_url(data.get("pdf_url"))
         notice_url = escape_link_url(data.get("notice_url"))
@@ -114,7 +164,7 @@ class TelegramBot:
         msg = (
             "🎓 *UGC NET OFFICIAL UPDATE*\n\n"
             f"📢 *Title:* `{title}`\n\n"
-            f"📅 *Published:* `{date}`\n"
+            f"📅 *Published:* {date_display}\n"
             f"🏫 *Session:* `{examination_session}`\n\n"
             f"📝 *Summary:*\n{summary}\n\n"
             f"⏱️ *Dates & Deadlines:*\n{important_dates}\n\n"
