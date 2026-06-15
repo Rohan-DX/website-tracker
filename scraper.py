@@ -251,3 +251,81 @@ class WebScraper:
                     "pdf_url": absolute_url if absolute_url.lower().endswith(".pdf") else ""
                 })
         return items
+
+    def scrape_hse_kerala(self, site_config):
+        """
+        Scrapes Directorate of Higher Secondary Education, Kerala (HSE) Portal.
+        Parses table rows and views their JSON AJAX endpoint to extract attachments.
+        """
+        url = site_config["url"]
+        logger.info(f"Starting scraping for HSE Kerala portal from {url}")
+        
+        response = fetch_url_with_retries(
+            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+        )
+        soup = BeautifulSoup(response.text, "html.parser")
+        
+        notices = []
+        tables = soup.find_all("table")
+        if not tables:
+            logger.error("No tables found on HSE Kerala portal page.")
+            return []
+            
+        main_table = tables[0]
+        rows = main_table.find_all("tr")
+        
+        # Row 0 is header. Rows 1+ are notices
+        for row in rows[1:]:
+            cols = row.find_all(["td", "th"])
+            if len(cols) < 6:
+                continue
+                
+            notice_type = cols[1].text.strip()
+            ref_date = cols[2].text.strip()
+            ref_number = cols[3].text.strip()
+            title = cols[4].text.strip().replace('\n', ' ')
+            title = re.sub(r'\s+', ' ', title)
+            
+            # Get the data-action-path attribute from the tr element
+            action_path = row.get("data-action-path", "")
+            if not action_path:
+                continue
+                
+            view_url = urljoin(url, action_path)
+            logger.info(f"Following HSE view path: {view_url} ({title[:50]}...)")
+            
+            # Visit the JSON view URL to get the attachments
+            try:
+                sub_response = fetch_url_with_retries(
+                    view_url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+                )
+                sub_data = sub_response.json()
+                modal_html = sub_data.get("form", "")
+                if modal_html:
+                    modal_soup = BeautifulSoup(modal_html, "html.parser")
+                    
+                    # Find all attachment download links
+                    pdf_links = []
+                    for a in modal_soup.find_all("a"):
+                        href = a.get("href", "")
+                        if "/icp/dow/" in href:
+                            pdf_links.append(urljoin(url, href))
+                            
+                    if pdf_links:
+                        notices.append({
+                            "title": title,
+                            "pdf_url": pdf_links[0], # Primary attachment
+                            "pdf_links": pdf_links,  # All attachments
+                            "notice_url": url,
+                            "view_url": view_url,
+                            "notice_type": notice_type,
+                            "ref_date": ref_date,
+                            "ref_number": ref_number
+                        })
+            except Exception as e:
+                logger.error(f"Error scraping HSE subpage {view_url}: {e}")
+                continue
+                
+        logger.info(f"Found {len(notices)} notices with attachments on HSE Kerala portal.")
+        return notices
+

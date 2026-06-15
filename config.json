@@ -25,6 +25,14 @@
       "type": "ugc_net",
       "enabled": true,
       "pdf_download": true
+    },
+    {
+      "id": "hse_kerala",
+      "name": "HSE Kerala Circulars",
+      "url": "https://www.hseportal.kerala.gov.in/hse/public/icp/index",
+      "type": "hse_kerala",
+      "enabled": true,
+      "pdf_download": true
     }
   ]
 }

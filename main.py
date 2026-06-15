@@ -260,6 +260,8 @@ def main():
                 items = scraper.scrape_kpsc_notifications(site)
             elif site_type == "ugc_net":
                 items = scraper.scrape_ugc_net(site)
+            elif site_type == "hse_kerala":
+                items = scraper.scrape_hse_kerala(site)
             elif site_type == "rss":
                 items = scraper.scrape_rss_feed(site)
             else:
@@ -351,6 +353,15 @@ def main():
                     }
                     ugc_data.update(parsed_details)
                     message_text = bot.format_ugc_net_message(ugc_data)
+                elif site_type == "hse_kerala":
+                    # Merge item details
+                    hse_data = {
+                        "title": title,
+                        "pdf_url": pdf_url,
+                        "notice_url": site_url
+                    }
+                    hse_data.update(item) # Includes notice_type, ref_date, ref_number
+                    message_text = bot.format_hse_message(hse_data)
                 else:
                     # Generic format
                     from telegram_bot import escape_markdown_v2, escape_link_url

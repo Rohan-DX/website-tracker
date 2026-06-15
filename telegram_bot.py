@@ -173,3 +173,35 @@ class TelegramBot:
             "━━━━━━━━━━━━━━"
         )
         return msg
+
+    def format_hse_message(self, data):
+        """
+        Formats an HSE Kerala circular/notice into a premium, rich Telegram MarkdownV2 message.
+        """
+        title = escape_markdown_v2(data.get("title") or "N/A")
+        notice_type = escape_markdown_v2(data.get("notice_type") or "N/A")
+        ref_number = escape_markdown_v2(data.get("ref_number") or "N/A")
+        
+        date_str = data.get("ref_date") or "N/A"
+        formatted_date = format_telegram_time(date_str, "D", date_str)
+        relative_date = format_telegram_time(date_str, "r", "")
+        date_display = f"{formatted_date} \\({relative_date}\\)" if relative_date else formatted_date
+        
+        pdf_url = escape_link_url(data.get("pdf_url"))
+        notice_url = escape_link_url(data.get("notice_url"))
+        
+        pdf_link = f"[Download PDF Attachment]({pdf_url})" if pdf_url else "N/A"
+        notice_link = f"[HSE Circulars page]({notice_url})" if notice_url else "N/A"
+
+        msg = (
+            "📢 *HSE KERALA CIRCULAR / NOTICE*\n\n"
+            f"📌 *Title:* `{title}`\n"
+            f"🏢 *Type:* `{notice_type}`\n"
+            f"🗂️ *Ref Number:* `{ref_number}`\n"
+            f"📅 *Ref Date:* {date_display}\n\n"
+            f"📥 *PDF:* {pdf_link}\n"
+            f"🌐 *Source:* {notice_link}\n\n"
+            "━━━━━━━━━━━━━━"
+        )
+        return msg
+
