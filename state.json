@@ -1,6 +1,6 @@
 {
-  "last_run": "2026-06-24T17:20:28.205866",
-  "daily_summary_sent_date": "2026-06-23",
+  "last_run": "2026-06-24T19:14:41.784639",
+  "daily_summary_sent_date": "2026-06-24",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
       "title": "Dairy Extension Officer - Dairy Development (Cat.No.23/2026)",
@@ -6930,20 +6930,17 @@
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a3b580e41116334e10e80d5",
       "timestamp": "2026-06-24T05:51:18.594071",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "eadc1257d2e35a0c533ef40f5a0fcac94a13eefd40f39dcd658bb20020e01f01": {
       "title": "2026-27- -DUPLICATE /FAKE COPY OF TEXT BOOK -INSTRUCTIONS",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a3bbc4db3a7312dca0831a8",
       "timestamp": "2026-06-24T12:10:51.637542",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     }
   },
-  "pending_summary_notifications": [
-    "2df6e4c7f218aaf84418bb8436307fb4bc2e77a851ba6b0d0e8836c7068a331d",
-    "eadc1257d2e35a0c533ef40f5a0fcac94a13eefd40f39dcd658bb20020e01f01"
-  ],
+  "pending_summary_notifications": [],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-06-15T16:37:19.071673",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30042026": "2026-06-15T16:37:19.445348",
