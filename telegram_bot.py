@@ -107,6 +107,22 @@ def escape_code_span(text):
         return ""
     return str(text).replace("\\", "\\\\").replace("`", "\\`")
 
+def format_blockquote(text):
+    """
+    Formats the given text inside a MarkdownV2 quote block by prefixing each line with '>'.
+    """
+    if not text:
+        return ""
+    lines = str(text).split("\n")
+    quoted_lines = []
+    for line in lines:
+        # Prepend unescaped '>' to each line
+        if line.strip():
+            quoted_lines.append(f"> {line}")
+        else:
+            quoted_lines.append("> ")
+    return "\n".join(quoted_lines)
+
 class TelegramBot:
     def __init__(self, token=None, chat_id=None):
         self.token = token or os.getenv("TELEGRAM_BOT_TOKEN")
@@ -180,12 +196,12 @@ class TelegramBot:
         qualification_raw = data.get("qualification") or "N/A"
         if len(qualification_raw) > 1000:
             qualification_raw = qualification_raw[:1000] + "..."
-        qualification = escape_markdown_v2(qualification_raw)
+        qualification = format_blockquote(escape_markdown_v2(qualification_raw))
         
         age_limit_raw = data.get("age_limit") or "N/A"
         if len(age_limit_raw) > 1000:
             age_limit_raw = age_limit_raw[:1000] + "..."
-        age_limit = escape_markdown_v2(age_limit_raw)
+        age_limit = format_blockquote(escape_markdown_v2(age_limit_raw))
         
         last_date_str = data.get("last_date") or "N/A"
         last_date_display = format_telegram_time(last_date_str, last_date_str)
@@ -197,7 +213,8 @@ class TelegramBot:
         notif_link = f"[View Gazette page]({notification_url})" if notification_url else "N/A"
 
         msg = (
-            "🔔 *NEW KERALA PSC NOTIFICATION*\n\n"
+            "🔔 *NEW KERALA PSC NOTIFICATION*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
             f"📌 *Post:* `{post_name}`\n"
             f"🗂️ *Category No:* `{category_number}`\n"
             f"🏢 *Department:* `{department}`\n"
@@ -205,9 +222,10 @@ class TelegramBot:
             f"📅 *Last Date:* {last_date_display}\n\n"
             f"⚙️ *Qualifications:*\n{qualification}\n\n"
             f"👤 *Age Limit:*\n{age_limit}\n\n"
-            f"📥 *PDF:* {pdf_link}\n"
-            f"🌐 *Source:* {notif_link}\n\n"
-            "━━━━━━━━━━━━━━"
+            "🔗 *Quick Links:*\n"
+            f"📥 {pdf_link}\n"
+            f"🌐 {notif_link}\n"
+            "━━━━━━━━━━━━━━━━━━━━━━"
         )
         return msg
 
@@ -221,12 +239,12 @@ class TelegramBot:
         summary_raw = data.get("summary") or "N/A"
         if len(summary_raw) > 1500:
             summary_raw = summary_raw[:1500] + "..."
-        summary = escape_markdown_v2(summary_raw)
+        summary = format_blockquote(escape_markdown_v2(summary_raw))
         
         important_dates_raw = data.get("important_dates") or "N/A"
         if len(important_dates_raw) > 1000:
             important_dates_raw = important_dates_raw[:1000] + "..."
-        important_dates = escape_markdown_v2(important_dates_raw)
+        important_dates = format_blockquote(escape_markdown_v2(important_dates_raw))
         
         date_str = data.get("date") or "N/A"
         date_display = format_telegram_time(date_str, date_str)
@@ -238,15 +256,17 @@ class TelegramBot:
         notice_link = f"[Visit NTA Portal]({notice_url})" if notice_url else "N/A"
 
         msg = (
-            "🎓 *UGC NET OFFICIAL UPDATE*\n\n"
-            f"📢 *Title:* `{title}`\n\n"
-            f"📅 *Published:* {date_display}\n"
-            f"🏫 *Session:* `{examination_session}`\n\n"
+            "🎓 *UGC NET OFFICIAL UPDATE*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
+            f"📢 *Title:* `{title}`\n"
+            f"🏫 *Session:* `{examination_session}`\n"
+            f"📅 *Published:* {date_display}\n\n"
             f"📝 *Summary:*\n{summary}\n\n"
             f"⏱️ *Dates & Deadlines:*\n{important_dates}\n\n"
-            f"📥 *PDF:* {pdf_link}\n"
-            f"🌐 *Source:* {notice_link}\n\n"
-            "━━━━━━━━━━━━━━"
+            "🔗 *Quick Links:*\n"
+            f"📥 {pdf_link}\n"
+            f"🌐 {notice_link}\n"
+            "━━━━━━━━━━━━━━━━━━━━━━"
         )
         return msg
 
@@ -268,14 +288,16 @@ class TelegramBot:
         notice_link = f"[HSE Circulars page]({notice_url})" if notice_url else "N/A"
 
         msg = (
-            "📢 *HSE KERALA CIRCULAR / NOTICE*\n\n"
+            "📢 *HSE KERALA CIRCULAR / NOTICE*\n"
+            "━━━━━━━━━━━━━━━━━━━━━━\n"
             f"📌 *Title:* `{title}`\n"
             f"🏢 *Type:* `{notice_type}`\n"
             f"🗂️ *Ref Number:* `{ref_number}`\n"
             f"📅 *Ref Date:* {date_display}\n\n"
-            f"📥 *PDF:* {pdf_link}\n"
-            f"🌐 *Source:* {notice_link}\n\n"
-            "━━━━━━━━━━━━━━"
+            "🔗 *Quick Links:*\n"
+            f"📥 {pdf_link}\n"
+            f"🌐 {notice_link}\n"
+            "━━━━━━━━━━━━━━━━━━━━━━"
         )
         return msg
 

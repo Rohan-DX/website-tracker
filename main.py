@@ -362,27 +362,32 @@ def run_daily_summary(state, config, bot):
             grouped[site_id] = []
         grouped[site_id].append(notif)
 
-    # Format Summary Message
-    from telegram_bot import escape_markdown_v2, escape_link_url
+    from telegram_bot import escape_markdown_v2, escape_link_url, format_blockquote
     
     date_display = now.strftime("%d %B %Y")
-    summary_msg = f"📋 *Daily Digest \\- {escape_markdown_v2(date_display)}*\n\n"
+    summary_msg = (
+        "📋 *DAILY DIGEST*\n"
+        "━━━━━━━━━━━━━━━━━━━━━━\n"
+        f"📅 *Date:* {escape_markdown_v2(date_display)}\n\n"
+    )
     
     for site_id, items in grouped.items():
         site_name = escape_markdown_v2(site_id.upper().replace("_", " "))
         summary_msg += f"🔸 *{site_name}* \\({len(items)}\\):\n"
+        site_digest = ""
         for idx, item in enumerate(items[:10], 1): # Limit to 10 per site in summary to prevent message size limit
             title_esc = escape_markdown_v2(item.get("title", "N/A"))
             link_esc = escape_link_url(item.get("link", ""))
             if link_esc:
-                summary_msg += f"{idx}\\. [{title_esc}]({link_esc})\n"
+                site_digest += f"{idx}\\. [{title_esc}]({link_esc})\n"
             else:
-                summary_msg += f"{idx}\\. {title_esc}\n"
+                site_digest += f"{idx}\\. {title_esc}\n"
         if len(items) > 10:
-            summary_msg += f"_\\+ {len(items) - 10} more notifications_\n"
-        summary_msg += "\n"
+            site_digest += f"\\+ {len(items) - 10} more notifications\n"
+            
+        summary_msg += format_blockquote(site_digest) + "\n\n"
 
-    summary_msg += "━━━━━━━━━━━━━━"
+    summary_msg += "━━━━━━━━━━━━━━━━━━━━━━"
 
     # Send message
     success = bot.send_message(summary_msg)
