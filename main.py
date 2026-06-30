@@ -4,6 +4,8 @@ import csv
 import json
 import logging
 import hashlib
+import requests
+import concurrent.futures
 from datetime import datetime
 from scraper import WebScraper
 from pdf_parser import parse_kpsc_pdf, parse_ugc_net_pdf, download_pdf
@@ -28,6 +30,77 @@ fh.setFormatter(formatter)
 logger.addHandler(fh)
 
 
+def load_state_from_db(db_url, db_secret=None):
+    """
+    Loads state from Firebase Realtime Database.
+    """
+    try:
+        url = f"{db_url.rstrip('/')}/state.json"
+        params = {}
+        if db_secret:
+            params["auth"] = db_secret
+        logger.info(f"Loading state from Firebase Realtime Database...")
+        r = requests.get(url, params=params, timeout=15)
+        if r.status_code == 200:
+            state = r.json()
+            if state is not None:
+                return state
+        else:
+            logger.error(f"Failed to load state from Firebase DB. Status: {r.status_code}")
+    except Exception as e:
+        logger.error(f"Error loading state from Firebase DB: {e}")
+    return None
+
+def save_state_to_db(db_url, state, db_secret=None):
+    """
+    Saves state to Firebase Realtime Database.
+    """
+    try:
+        url = f"{db_url.rstrip('/')}/state.json"
+        params = {}
+        if db_secret:
+            params["auth"] = db_secret
+        logger.info(f"Saving state to Firebase Realtime Database...")
+        r = requests.put(url, json=state, params=params, timeout=15)
+        if r.status_code == 200:
+            logger.info("state.json uploaded to Firebase DB successfully.")
+            return True
+        else:
+            logger.error(f"Failed to save state to Firebase DB. Status: {r.status_code}, Response: {r.text}")
+    except Exception as e:
+        logger.error(f"Error saving state to Firebase DB: {e}")
+    return False
+
+def append_to_csv_in_db(db_url, timestamp, site_id, title, link, details_dict, db_secret=None):
+    """
+    Appends a notification record to the list in Firebase Realtime Database.
+    """
+    try:
+        url = f"{db_url.rstrip('/')}/notifications.json"
+        params = {}
+        if db_secret:
+            params["auth"] = db_secret
+        
+        details_str = "; ".join([f"{k}: {v}" for k, v in details_dict.items() if v and v != "N/A"])
+        record = {
+            "timestamp": timestamp,
+            "site_id": site_id,
+            "title": title,
+            "link": link,
+            "details": details_str
+        }
+        logger.info(f"Appending notification to Firebase Realtime Database list...")
+        r = requests.post(url, json=record, params=params, timeout=15)
+        if r.status_code == 200:
+            logger.info("Notification appended to Firebase DB list.")
+            return True
+        else:
+            logger.error(f"Failed to append notification to Firebase DB. Status: {r.status_code}")
+    except Exception as e:
+        logger.error(f"Error appending notification to Firebase DB: {e}")
+    return False
+
+
 def load_config():
     """
     Loads configuration from config.json.
@@ -46,105 +119,125 @@ def load_config():
 
 def load_state():
     """
-    Loads state from state.json.
+    Loads state from database or state.json fallback.
     """
-    state_path = "state.json"
+    db_url = os.getenv("DATABASE_URL")
+    db_secret = os.getenv("DATABASE_SECRET")
+    
+    state = None
+    if db_url:
+        state = load_state_from_db(db_url, db_secret)
+        
     default_state = {
         "last_run": None,
         "daily_summary_sent_date": None,
         "seen_notifications": {},
         "pending_summary_notifications": [],
-        "processed_subpages": {}
+        "processed_subpages": {},
+        "scraper_health": {}
     }
-    if not os.path.exists(state_path):
-        logger.info(f"State file {state_path} not found. Creating default state.")
-        return default_state
-    try:
-        with open(state_path, "r", encoding="utf-8") as f:
-            state = json.load(f)
-            # Ensure required keys exist
-            for key, val in default_state.items():
-                if key not in state:
-                    state[key] = val
-            
-            # Migrate existing unsent notifications to the pending list if empty
-            if not state.get("pending_summary_notifications"):
-                pending = []
-                for notif_hash, notif in state.get("seen_notifications", {}).items():
-                    if not notif.get("sent_in_summary", False):
-                        pending.append(notif_hash)
-                state["pending_summary_notifications"] = pending
+    
+    if state is None:
+        state_path = "state.json"
+        if not os.path.exists(state_path):
+            logger.info(f"State file {state_path} not found. Creating default state.")
+            return default_state
+        try:
+            with open(state_path, "r", encoding="utf-8") as f:
+                state = json.load(f)
+        except Exception as e:
+            logger.error(f"Error reading state.json: {e}. Reverting to default state.")
+            return default_state
 
-            return state
-    except Exception as e:
-        logger.error(f"Error reading state.json: {e}. Reverting to default state.")
-        return default_state
+    # Ensure required keys exist
+    for key, val in default_state.items():
+        if key not in state:
+            state[key] = val
+        
+    # Migrate existing unsent notifications to the pending list if empty
+    if not state.get("pending_summary_notifications"):
+        pending = []
+        for notif_hash, notif in state.get("seen_notifications", {}).items():
+            if not notif.get("sent_in_summary", False):
+                pending.append(notif_hash)
+        state["pending_summary_notifications"] = pending
+
+    return state
 
 
 def save_state(state, config=None):
     """
-    Saves state to state.json after performing a TTL and inactive-site purge.
+    Saves state to database or state.json fallback, performing TTL/inactive-site pruning.
     """
+    # Perform pruning if config is provided
+    if config and "seen_notifications" in state:
+        active_site_ids = {site["id"] for site in config.get("websites", [])}
+        seen_notifs = state["seen_notifications"]
+        purged_notifs = {}
+        now = datetime.now()
+        ttl_days = config.get("state_ttl_days", 90)
+        purged_ttl_count = 0
+        purged_site_count = 0
+        
+        for h, notif in seen_notifs.items():
+            site_id = notif.get("site_id")
+            # 1. Purge inactive site entries (e.g. mgu_results)
+            if site_id not in active_site_ids:
+                purged_site_count += 1
+                continue
+            
+            # 2. Purge entries older than 90 days
+            ts_str = notif.get("timestamp")
+            keep = True
+            if ts_str:
+                try:
+                    ts = datetime.fromisoformat(ts_str)
+                    if ts.tzinfo is not None:
+                        ts = ts.replace(tzinfo=None)
+                    if (now - ts).days > ttl_days:
+                        keep = False
+                        purged_ttl_count += 1
+                except Exception as e:
+                    logger.error(f"Error checking TTL for notification {h}: {e}")
+            
+            if keep:
+                purged_notifs[h] = notif
+        
+        if purged_ttl_count > 0 or purged_site_count > 0:
+            logger.info(f"State pruning: removed {purged_site_count} inactive site entries and {purged_ttl_count} expired entries.")
+            state["seen_notifications"] = purged_notifs
+            
+            # Cleanup pending list for purged entries
+            if "pending_summary_notifications" in state:
+                state["pending_summary_notifications"] = [
+                    h for h in state["pending_summary_notifications"] if h in purged_notifs
+                ]
+        
+        # Prune processed subpages cache (TTL > 90 days)
+        if "processed_subpages" in state:
+            purged_subpages = {}
+            for url, ts_str in state["processed_subpages"].items():
+                try:
+                    ts = datetime.fromisoformat(ts_str)
+                    if ts.tzinfo is not None:
+                        ts = ts.replace(tzinfo=None)
+                    if (now - ts).days <= ttl_days:
+                        purged_subpages[url] = ts_str
+                except Exception:
+                    purged_subpages[url] = ts_str # Keep if unparseable
+            state["processed_subpages"] = purged_subpages
+
+    db_url = os.getenv("DATABASE_URL")
+    db_secret = os.getenv("DATABASE_SECRET")
+    
+    if db_url:
+        saved = save_state_to_db(db_url, state, db_secret)
+        if saved:
+            return
+
+    # Fallback to local file
     state_path = "state.json"
     try:
-        # Perform pruning if config is provided
-        if config and "seen_notifications" in state:
-            active_site_ids = {site["id"] for site in config.get("websites", [])}
-            seen_notifs = state["seen_notifications"]
-            purged_notifs = {}
-            now = datetime.now()
-            ttl_days = config.get("state_ttl_days", 90)
-            purged_ttl_count = 0
-            purged_site_count = 0
-            
-            for h, notif in seen_notifs.items():
-                site_id = notif.get("site_id")
-                # 1. Purge inactive site entries (e.g. mgu_results)
-                if site_id not in active_site_ids:
-                    purged_site_count += 1
-                    continue
-                
-                # 2. Purge entries older than 90 days
-                ts_str = notif.get("timestamp")
-                keep = True
-                if ts_str:
-                    try:
-                        ts = datetime.fromisoformat(ts_str)
-                        if ts.tzinfo is not None:
-                            ts = ts.replace(tzinfo=None)
-                        if (now - ts).days > ttl_days:
-                            keep = False
-                            purged_ttl_count += 1
-                    except Exception as e:
-                        logger.error(f"Error checking TTL for notification {h}: {e}")
-                
-                if keep:
-                    purged_notifs[h] = notif
-            
-            if purged_ttl_count > 0 or purged_site_count > 0:
-                logger.info(f"State pruning: removed {purged_site_count} inactive site entries and {purged_ttl_count} expired entries.")
-                state["seen_notifications"] = purged_notifs
-                
-                # Cleanup pending list for purged entries
-                if "pending_summary_notifications" in state:
-                    state["pending_summary_notifications"] = [
-                        h for h in state["pending_summary_notifications"] if h in purged_notifs
-                    ]
-            
-            # Prune processed subpages cache (TTL > 90 days)
-            if "processed_subpages" in state:
-                purged_subpages = {}
-                for url, ts_str in state["processed_subpages"].items():
-                    try:
-                        ts = datetime.fromisoformat(ts_str)
-                        if ts.tzinfo is not None:
-                            ts = ts.replace(tzinfo=None)
-                        if (now - ts).days <= ttl_days:
-                            purged_subpages[url] = ts_str
-                    except Exception:
-                        purged_subpages[url] = ts_str # Keep if unparseable
-                state["processed_subpages"] = purged_subpages
-
         with open(state_path, "w", encoding="utf-8") as f:
             json.dump(state, f, indent=2)
         logger.info("state.json updated successfully.")
@@ -154,10 +247,18 @@ def save_state(state, config=None):
 
 def append_to_csv(csv_path, timestamp, site_id, title, link, details_dict):
     """
-    Appends a new notification record to a CSV file.
+    Appends a new notification record to database or CSV fallback.
     """
-    file_exists = os.path.exists(csv_path)
+    db_url = os.getenv("DATABASE_URL")
+    db_secret = os.getenv("DATABASE_SECRET")
     
+    if db_url:
+        appended = append_to_csv_in_db(db_url, timestamp, site_id, title, link, details_dict, db_secret)
+        if appended:
+            return
+
+    # Fallback to local CSV
+    file_exists = os.path.exists(csv_path)
     # Flatten details dict into a readable string
     details_str = "; ".join([f"{k}: {v}" for k, v in details_dict.items() if v and v != "N/A"])
     
@@ -296,6 +397,28 @@ def run_daily_summary(state, config, bot):
         logger.error("Failed to send daily summary. Will retry in next execution.")
 
 
+def scrape_site_task(scraper, site, state):
+    site_id = site["id"]
+    site_type = site["type"]
+    logger.info(f"Processing site: {site['name']} ({site_id})")
+    try:
+        items = []
+        if site_type == "kpsc_notifications":
+            items = scraper.scrape_kpsc_notifications(site, state.get("processed_subpages"))
+        elif site_type == "ugc_net":
+            items = scraper.scrape_ugc_net(site)
+        elif site_type == "hse_kerala":
+            items = scraper.scrape_hse_kerala(site, state.get("processed_subpages"))
+        elif site_type == "rss":
+            items = scraper.scrape_rss_feed(site)
+        else:
+            items = scraper.scrape_generic_site(site)
+        return site, items, None
+    except Exception as e:
+        logger.error(f"Error scraping website {site_id}: {e}")
+        return site, [], e
+
+
 def main():
     logger.info("--- Starting Website Tracker Execution ---")
     
@@ -318,30 +441,49 @@ def main():
     new_notifs_found = 0
     csv_path = config.get("csv_export_path", "notifications.csv")
 
-    for site in config.get("websites", []):
-        if not site.get("enabled", True):
-            logger.info(f"Site {site['id']} is disabled. Skipping.")
-            continue
+    active_sites = [site for site in config.get("websites", []) if site.get("enabled", True)]
+    
+    # Run scraping concurrently
+    scraped_results = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=len(active_sites) or 1) as executor:
+        futures = {executor.submit(scrape_site_task, scraper, site, state): site for site in active_sites}
+        for future in concurrent.futures.as_completed(futures):
+            site, items, error = future.result()
+            scraped_results.append((site, items, error))
             
+    # Process scraped results sequentially
+    for site, items, error in scraped_results:
         site_id = site["id"]
         site_type = site["type"]
         site_url = site["url"]
         
-        logger.info(f"Processing site: {site['name']} ({site_id})")
-        
+        # Scraper Health Check & Alert
+        if "scraper_health" not in state:
+            state["scraper_health"] = {}
+        if site_id not in state["scraper_health"]:
+            state["scraper_health"][site_id] = {"fail_count": 0, "last_fail_reason": None}
+            
+        if error:
+            state["scraper_health"][site_id]["fail_count"] += 1
+            state["scraper_health"][site_id]["last_fail_reason"] = str(error)
+            
+            fail_count = state["scraper_health"][site_id]["fail_count"]
+            if fail_count == 3:
+                from telegram_bot import escape_code_span
+                alert_text = (
+                    f"⚠️ *SCRAPER FAILURE WARNING*\n\n"
+                    f"Site: `{escape_code_span(site['name'])}` \\(`{escape_code_span(site_id)}`\\)\n"
+                    f"Consecutive Failures: `{fail_count}`\n"
+                    f"Last Error: `{escape_code_span(str(error)[:200])}`\n\n"
+                    f"Please check the selectors or portal status\\."
+                )
+                bot.send_message(alert_text)
+            continue
+        else:
+            state["scraper_health"][site_id]["fail_count"] = 0
+            state["scraper_health"][site_id]["last_fail_reason"] = None
+
         try:
-            items = []
-            if site_type == "kpsc_notifications":
-                items = scraper.scrape_kpsc_notifications(site, state.get("processed_subpages"))
-            elif site_type == "ugc_net":
-                items = scraper.scrape_ugc_net(site)
-            elif site_type == "hse_kerala":
-                items = scraper.scrape_hse_kerala(site, state.get("processed_subpages"))
-            elif site_type == "rss":
-                items = scraper.scrape_rss_feed(site)
-            else:
-                items = scraper.scrape_generic_site(site)
-                
             for item in items:
                 # Standardize title and link for duplicate detection
                 title = item.get("result_title") or item.get("title") or "N/A"

@@ -23,12 +23,14 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          OCR_API_KEY: ${{ secrets.OCR_API_KEY }}
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_SECRET: ${{ secrets.DATABASE_SECRET }}
         run: python main.py
 
       - name: Commit updated state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add state.json notifications.csv
-          git diff --cached --quiet || git commit -m "chore: update tracker state [skip ci]"
-          git push
+          git add state.json notifications.csv || true
+          git diff --cached --quiet || (git commit -m "chore: update tracker state [skip ci]" && git push) || true

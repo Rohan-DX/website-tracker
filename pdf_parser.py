@@ -43,9 +43,55 @@ def download_pdf(url, headers, timeout=30):
         return None
 
 
+def perform_ocr_on_pdf(pdf_path, api_key=None):
+    """
+    Performs OCR on a PDF using the free OCR.space API.
+    """
+    if not pdf_path or not os.path.exists(pdf_path):
+        return ""
+    
+    if not api_key:
+        api_key = os.getenv("OCR_API_KEY", "helloworld")
+        
+    url = "https://api.ocr.space/parse/image"
+    try:
+        logger.info(f"Sending PDF to OCR.space API for text extraction: {pdf_path}")
+        with open(pdf_path, 'rb') as f:
+            payload = {
+                'apikey': api_key,
+                'language': 'eng',
+                'filetype': 'pdf'
+            }
+            files = {
+                'file': f
+            }
+            # Timeout is longer since OCR takes time
+            response = requests.post(url, data=payload, files=files, timeout=60)
+            
+        if response.status_code == 200:
+            result = response.json()
+            if result.get("OCRExitCode") == 1:
+                parsed_results = result.get("ParsedResults", [])
+                text_pages = []
+                for page in parsed_results:
+                    text_page = page.get("ParsedText", "")
+                    if text_page:
+                        text_pages.append(text_page)
+                extracted_text = "\n".join(text_pages).strip()
+                logger.info(f"OCR.space successfully extracted {len(extracted_text)} characters.")
+                return extracted_text
+            else:
+                logger.error(f"OCR.space API error: {result.get('ErrorMessage') or result.get('ErrorDetails')}")
+        else:
+            logger.error(f"OCR.space request failed with status: {response.status_code}")
+    except Exception as e:
+        logger.error(f"Error during OCR.space execution: {e}")
+    return ""
+
+
 def extract_text_from_pdf(pdf_path):
     """
-    Extracts text from a local PDF file using pdfplumber, with fallback to PyMuPDF.
+    Extracts text from a local PDF file using pdfplumber, with fallback to PyMuPDF and OCR.space.
     """
     text = ""
     # Try pdfplumber first
@@ -61,12 +107,11 @@ def extract_text_from_pdf(pdf_path):
                 text = "\n".join(pages_text).strip()
                 if text:
                     logger.info(f"Extracted {len(text)} characters using pdfplumber.")
-                    return text
         except Exception as e:
             logger.warning(f"pdfplumber text extraction failed: {e}")
 
-    # Fallback to PyMuPDF
-    if HAS_PYMUPDF:
+    # Fallback to PyMuPDF if text is still empty/short
+    if len(text) <= 100 and HAS_PYMUPDF:
         try:
             logger.info("Attempting text extraction using PyMuPDF (fitz) fallback...")
             doc = fitz.open(pdf_path)
@@ -75,15 +120,22 @@ def extract_text_from_pdf(pdf_path):
                 page_text = page.get_text()
                 if page_text:
                     pages_text.append(page_text)
-            text = "\n".join(pages_text).strip()
-            if text:
+            text_fitz = "\n".join(pages_text).strip()
+            if text_fitz:
+                text = text_fitz
                 logger.info(f"Extracted {len(text)} characters using PyMuPDF.")
-                return text
         except Exception as e:
             logger.error(f"PyMuPDF text extraction failed: {e}")
 
-    if not HAS_PDFPLUMBER and not HAS_PYMUPDF:
-        logger.error("Neither pdfplumber nor PyMuPDF is installed. Cannot extract PDF text.")
+    # Fallback to OCR.space if text is still empty/short (scanned document)
+    if len(text) <= 100:
+        logger.info("PDF has very little readable text (likely scanned photocopy). Initiating OCR fallback...")
+        ocr_text = perform_ocr_on_pdf(pdf_path)
+        if ocr_text:
+            text = ocr_text
+
+    if not HAS_PDFPLUMBER and not HAS_PYMUPDF and len(text) <= 100:
+        logger.error("No text extractors installed. Cannot extract PDF text.")
     
     return text
 
