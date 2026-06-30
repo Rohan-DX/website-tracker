@@ -93,7 +93,7 @@ def save_state(state, config=None):
             seen_notifs = state["seen_notifications"]
             purged_notifs = {}
             now = datetime.now()
-            ttl_days = 90
+            ttl_days = config.get("state_ttl_days", 90)
             purged_ttl_count = 0
             purged_site_count = 0
             
@@ -158,21 +158,6 @@ def append_to_csv(csv_path, timestamp, site_id, title, link, details_dict):
     """
     file_exists = os.path.exists(csv_path)
     
-    # Check if the title + link already exists in the CSV
-    if file_exists:
-        try:
-            with open(csv_path, "r", encoding="utf-8") as f:
-                reader = csv.reader(f)
-                # Skip header if it exists
-                next(reader, None)
-                for row in reader:
-                    # Index 2 is Title, Index 3 is Link
-                    if len(row) >= 4 and row[2] == title and row[3] == link:
-                        logger.info(f"Notification already exists in CSV, skipping append: {title}")
-                        return
-        except Exception as e:
-            logger.error(f"Error checking duplicate in CSV: {e}")
-            
     # Flatten details dict into a readable string
     details_str = "; ".join([f"{k}: {v}" for k, v in details_dict.items() if v and v != "N/A"])
     
@@ -327,7 +312,7 @@ def main():
     if is_first_run:
         logger.info("First run detected. State will be seeded without sending Telegram alerts.")
     elif not bot.is_configured():
-        logger.warning("Telegram Telegram Bot credentials missing in environment variables.")
+        logger.warning("Telegram Bot credentials missing in environment variables.")
 
     # Track how many new notifications were processed in this run
     new_notifs_found = 0
@@ -386,10 +371,8 @@ def main():
                     state["seen_notifications"][notif_hash]["sent_in_summary"] = True
                     continue
 
-                # Add hash to pending summary notifications
-                if "pending_summary_notifications" not in state:
-                    state["pending_summary_notifications"] = []
-                state["pending_summary_notifications"].append(notif_hash)
+                # Add hash to pending summary notifications (will be deferred until after keyword filtering passes)
+                pass
 
                 # Run PDF downloading and parsing if configured
                 parsed_details = {}
@@ -411,6 +394,12 @@ def main():
                     # Keyword filtering
                     if not passes_keyword_filter(title, pdf_text, config.get("keywords")):
                         continue
+
+                    # Add hash to pending summary notifications since it passed the filter
+                    if "pending_summary_notifications" not in state:
+                        state["pending_summary_notifications"] = []
+                    if notif_hash not in state["pending_summary_notifications"]:
+                        state["pending_summary_notifications"].append(notif_hash)
 
                     # Proceed with detailed PDF parsing
                     if temp_pdf_path:
@@ -468,8 +457,9 @@ def main():
                     message_text = (
                         f"📢 *New Update from {escaped_site_name}*\n\n"
                         f"{escaped_title}\n\n"
-                        f"[Link]({escaped_link})" if escaped_link else ""
                     )
+                    if escaped_link:
+                        message_text += f"[Link]({escaped_link})"
 
                 # Send Alert
                 logger.info(f"Sending Telegram Alert for notification: {title}")
@@ -478,8 +468,19 @@ def main():
                 # Sleep to prevent Telegram rate limit issues
                 time.sleep(0.5)
                 
+                # Compile details for CSV export
+                csv_details = {}
+                if site_type in ("kpsc_notifications", "ugc_net"):
+                    csv_details = parsed_details
+                elif site_type == "hse_kerala":
+                    csv_details = {
+                        "notice_type": item.get("notice_type", "N/A"),
+                        "ref_date": item.get("ref_date", "N/A"),
+                        "ref_number": item.get("ref_number", "N/A")
+                    }
+
                 # Export to CSV
-                append_to_csv(csv_path, timestamp, site_id, title, link, parsed_details)
+                append_to_csv(csv_path, timestamp, site_id, title, link, csv_details)
                 new_notifs_found += 1
                 
         except Exception as e:

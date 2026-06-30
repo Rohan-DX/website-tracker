@@ -56,15 +56,56 @@ def date_to_unix(date_str):
             
     return None
 
-def format_telegram_time(date_str, format_str="D", fallback="N/A"):
+def get_relative_date_string(date_str):
     """
-    Formats a date string into Telegram's native interactive tg://time link format.
+    Computes relative date string from date_str (e.g. '3 days ago' or 'in 2 days').
     """
     ts = date_to_unix(date_str)
-    if ts:
-        escaped_fallback = escape_markdown_v2(date_str)
-        return f"![{escaped_fallback}](tg://time?unix={ts}&format={format_str})"
+    if not ts:
+        return ""
+    
+    try:
+        # Calculate days difference
+        target = datetime.fromtimestamp(ts)
+        today = datetime.now()
+        target_date = target.date()
+        today_date = today.date()
+        
+        diff = (target_date - today_date).days
+        
+        if diff == 0:
+            return "today"
+        elif diff == 1:
+            return "tomorrow"
+        elif diff == -1:
+            return "yesterday"
+        elif diff > 1:
+            return f"in {diff} days"
+        else:
+            return f"{abs(diff)} days ago"
+    except Exception:
+        return ""
+
+def format_telegram_time(date_str, fallback="N/A"):
+    """
+    Formats a date string for Telegram, appending a natively computed relative date string.
+    """
+    if date_str and date_str != "N/A":
+        escaped_date = escape_markdown_v2(date_str)
+        relative = get_relative_date_string(date_str)
+        if relative:
+            escaped_relative = escape_markdown_v2(relative)
+            return f"{escaped_date} \\({escaped_relative}\\)"
+        return escaped_date
     return escape_markdown_v2(fallback)
+
+def escape_code_span(text):
+    """
+    Escapes only backtick and backslash for code/pre entities in MarkdownV2.
+    """
+    if text is None:
+        return ""
+    return str(text).replace("\\", "\\\\").replace("`", "\\`")
 
 class TelegramBot:
     def __init__(self, token=None, chat_id=None):
@@ -84,13 +125,20 @@ class TelegramBot:
                            "(Provide TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID)")
             return False
 
+        # Fallback truncation: if still > 4096 despite raw caps, strip formatting and slice plain text
+        if len(text) > 4096:
+            logger.warning(f"Message length ({len(text)}) exceeds Telegram limit. Truncating and stripping formatting.")
+            text = text[:4090] + "..."
+            parse_mode = None
+
         url = f"{self.base_url}/sendMessage"
         payload = {
             "chat_id": self.chat_id,
             "text": text,
-            "parse_mode": parse_mode,
             "disable_web_page_preview": False
         }
+        if parse_mode:
+            payload["parse_mode"] = parse_mode
 
         try:
             logger.info(f"Sending message to Telegram chat {self.chat_id}...")
@@ -102,6 +150,13 @@ class TelegramBot:
                 logger.warning(f"Telegram rate limited. Retrying after {retry_after}s...")
                 time.sleep(retry_after)
                 r = requests.post(url, json=payload, timeout=15)
+
+            # Fallback if MarkdownV2 entities fail to parse (HTTP 400 with 'can\'t parse entities')
+            if r.status_code == 400 and "can't parse entities" in r.text:
+                logger.warning("Telegram failed to parse MarkdownV2 entities. Retrying as plain text...")
+                payload_fallback = payload.copy()
+                payload_fallback.pop("parse_mode", None)
+                r = requests.post(url, json=payload_fallback, timeout=15)
 
             if r.status_code == 200:
                 logger.info("Telegram message sent successfully.")
@@ -117,17 +172,23 @@ class TelegramBot:
         """
         Formats a Kerala PSC notification into a premium, rich Telegram MarkdownV2 message.
         """
-        post_name = escape_markdown_v2(data.get("post_name") or "N/A")
-        category_number = escape_markdown_v2(data.get("category_number") or "N/A")
-        department = escape_markdown_v2(data.get("department") or "N/A")
-        qualification = escape_markdown_v2(data.get("qualification") or "N/A")
-        age_limit = escape_markdown_v2(data.get("age_limit") or "N/A")
-        pay_scale = escape_markdown_v2(data.get("pay_scale") or "N/A")
+        post_name = escape_code_span(data.get("post_name") or "N/A")
+        category_number = escape_code_span(data.get("category_number") or "N/A")
+        department = escape_code_span(data.get("department") or "N/A")
+        pay_scale = escape_code_span(data.get("pay_scale") or "N/A")
+
+        qualification_raw = data.get("qualification") or "N/A"
+        if len(qualification_raw) > 1000:
+            qualification_raw = qualification_raw[:1000] + "..."
+        qualification = escape_markdown_v2(qualification_raw)
+        
+        age_limit_raw = data.get("age_limit") or "N/A"
+        if len(age_limit_raw) > 1000:
+            age_limit_raw = age_limit_raw[:1000] + "..."
+        age_limit = escape_markdown_v2(age_limit_raw)
         
         last_date_str = data.get("last_date") or "N/A"
-        formatted_last_date = format_telegram_time(last_date_str, "D", last_date_str)
-        relative_last_date = format_telegram_time(last_date_str, "r", "")
-        last_date_display = f"{formatted_last_date} \\({relative_last_date}\\)" if relative_last_date else formatted_last_date
+        last_date_display = format_telegram_time(last_date_str, last_date_str)
         
         pdf_url = escape_link_url(data.get("pdf_url"))
         notification_url = escape_link_url(data.get("notification_url"))
@@ -154,15 +215,21 @@ class TelegramBot:
         """
         Formats a UGC NET notice into a premium, rich Telegram MarkdownV2 message.
         """
-        title = escape_markdown_v2(data.get("title") or "N/A")
-        summary = escape_markdown_v2(data.get("summary") or "N/A")
-        important_dates = escape_markdown_v2(data.get("important_dates") or "N/A")
-        examination_session = escape_markdown_v2(data.get("examination_session") or "N/A")
+        title = escape_code_span(data.get("title") or "N/A")
+        examination_session = escape_code_span(data.get("examination_session") or "N/A")
+
+        summary_raw = data.get("summary") or "N/A"
+        if len(summary_raw) > 1500:
+            summary_raw = summary_raw[:1500] + "..."
+        summary = escape_markdown_v2(summary_raw)
+        
+        important_dates_raw = data.get("important_dates") or "N/A"
+        if len(important_dates_raw) > 1000:
+            important_dates_raw = important_dates_raw[:1000] + "..."
+        important_dates = escape_markdown_v2(important_dates_raw)
         
         date_str = data.get("date") or "N/A"
-        formatted_date = format_telegram_time(date_str, "D", date_str)
-        relative_date = format_telegram_time(date_str, "r", "")
-        date_display = f"{formatted_date} \\({relative_date}\\)" if relative_date else formatted_date
+        date_display = format_telegram_time(date_str, date_str)
         
         pdf_url = escape_link_url(data.get("pdf_url"))
         notice_url = escape_link_url(data.get("notice_url"))
@@ -187,14 +254,12 @@ class TelegramBot:
         """
         Formats an HSE Kerala circular/notice into a premium, rich Telegram MarkdownV2 message.
         """
-        title = escape_markdown_v2(data.get("title") or "N/A")
-        notice_type = escape_markdown_v2(data.get("notice_type") or "N/A")
-        ref_number = escape_markdown_v2(data.get("ref_number") or "N/A")
+        title = escape_code_span(data.get("title") or "N/A")
+        notice_type = escape_code_span(data.get("notice_type") or "N/A")
+        ref_number = escape_code_span(data.get("ref_number") or "N/A")
         
         date_str = data.get("ref_date") or "N/A"
-        formatted_date = format_telegram_time(date_str, "D", date_str)
-        relative_date = format_telegram_time(date_str, "r", "")
-        date_display = f"{formatted_date} \\({relative_date}\\)" if relative_date else formatted_date
+        date_display = format_telegram_time(date_str, date_str)
         
         pdf_url = escape_link_url(data.get("pdf_url"))
         notice_url = escape_link_url(data.get("notice_url"))

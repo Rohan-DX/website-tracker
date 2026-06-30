@@ -5,6 +5,7 @@
   "retry_backoff_factor": 2,
   "daily_summary_time": "18:00",
   "csv_export_path": "notifications.csv",
+  "state_ttl_days": 90,
   "keywords": {
     "include": [],
     "exclude": []

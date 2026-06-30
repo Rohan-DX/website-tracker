@@ -6,6 +6,11 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 import xml.etree.ElementTree as ET
 
+from urllib3.exceptions import InsecureRequestWarning
+
+# Disable SSL verification warnings for insecure university/government portals
+requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
+
 logger = logging.getLogger("website_tracker")
 
 def fetch_url_with_retries(url, headers, timeout=15, max_retries=3, backoff_factor=2, verify=True):
@@ -13,9 +18,6 @@ def fetch_url_with_retries(url, headers, timeout=15, max_retries=3, backoff_fact
     Fetches a URL using requests with exponential backoff retries for transient errors.
     """
     last_exception = None
-    # Disable SSL verification warnings for insecure university portals
-    from urllib3.exceptions import InsecureRequestWarning
-    requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
     for attempt in range(1, max_retries + 1):
         try:
@@ -77,7 +79,7 @@ class WebScraper:
         
         notifications = []
         # Skip header row (index 0)
-        for row in rows[1:]:
+        for idx, row in enumerate(rows[1:], 1):
             cols = row.find_all(["td", "th"])
             if not cols:
                 continue
@@ -95,7 +97,8 @@ class WebScraper:
                 continue
                 
             subpage_url = urljoin(url, subpage_href)
-            if processed_subpages is not None and subpage_url in processed_subpages:
+            # Skip cache check for the first 2 subpages to ensure we fetch updates/late additions
+            if idx > 2 and processed_subpages is not None and subpage_url in processed_subpages:
                 logger.info(f"Skipping already processed KPSC subpage: {subpage_url}")
                 continue
 
@@ -285,7 +288,7 @@ class WebScraper:
         rows = main_table.find_all("tr")
         
         # Row 0 is header. Rows 1+ are notices
-        for row in rows[1:]:
+        for idx, row in enumerate(rows[1:], 1):
             cols = row.find_all(["td", "th"])
             if len(cols) < 6:
                 continue
@@ -302,7 +305,8 @@ class WebScraper:
                 continue
                 
             view_url = urljoin(url, action_path)
-            if processed_subpages is not None and view_url in processed_subpages:
+            # Skip cache check for the first 3 notices to allow for late circular updates/attachments
+            if idx > 3 and processed_subpages is not None and view_url in processed_subpages:
                 logger.info(f"Skipping already processed HSE view URL: {view_url}")
                 continue
 
