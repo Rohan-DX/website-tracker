@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-07-01T08:53:45.299254",
+  "last_run": "2026-07-01T12:13:22.162808",
   "daily_summary_sent_date": "2026-06-30",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -7176,11 +7176,60 @@
       "timestamp": "2026-06-30T12:28:33.253746",
       "site_id": "kpsc_notifications",
       "sent_in_summary": true
+    },
+    "0bfa55cc8c4b8eab7bf2fbfdec94033e07107a2bc6b147e3b0470321b94b3148": {
+      "title": "Fitter (By Transfer) - Kerala Water Authority (Cat.No.52/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-52-26.pdf",
+      "timestamp": "2026-07-01T12:12:36.129410",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "b217760baaeab220651793e6a6c951c0dbec4dbc79b935a61226e93b7752b014": {
+      "title": "Confidential assistant (Direct Recruitment) - Kerala Live Stock Development Board Ltd. (Cat.No.54/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-54-26.pdf",
+      "timestamp": "2026-07-01T12:12:42.880203",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "5d0c7914261c69ccc10e19a7cb90cc982ae6c0a48930c5cd8aa147ef8b6fe3f0": {
+      "title": "Confidential Assistant (By Transfer) - Kerala Live Stock Development Board Ltd. (Cat.No.55/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-55-26-corrected.pdf",
+      "timestamp": "2026-07-01T12:12:49.326386",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "8f03ddc77db8dcce37181977054fbb2f32886f6a00e81f204e40856682d87e64": {
+      "title": "Mortuary Technician Grade-II (SR for ST only) - Medical Education (Cat.No.59/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-59-26-corrected.pdf",
+      "timestamp": "2026-07-01T12:13:00.249591",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "f7ff98128dce3554b0cd35701a3deaf9f1700f98253f91aeab953cd71c3920d7": {
+      "title": "Clerk-Typist (Special Recruitment for SC/ST) - Various (Cat.No.61/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-61-26-corrected.pdf",
+      "timestamp": "2026-07-01T12:13:07.119926",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "c12e0df8bf5a29b6a9e6648139effdd10d8c3e5dcddb6fb99f9647fa4b5cb91a": {
+      "title": "Electrician (III NCA-SC) - Kerala State Film Development Corporation Ltd. (Cat.No.66/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-66-26-corrected.pdf",
+      "timestamp": "2026-07-01T12:13:15.161365",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "0bfa55cc8c4b8eab7bf2fbfdec94033e07107a2bc6b147e3b0470321b94b3148",
+    "b217760baaeab220651793e6a6c951c0dbec4dbc79b935a61226e93b7752b014",
+    "5d0c7914261c69ccc10e19a7cb90cc982ae6c0a48930c5cd8aa147ef8b6fe3f0",
+    "8f03ddc77db8dcce37181977054fbb2f32886f6a00e81f204e40856682d87e64",
+    "f7ff98128dce3554b0cd35701a3deaf9f1700f98253f91aeab953cd71c3920d7",
+    "c12e0df8bf5a29b6a9e6648139effdd10d8c3e5dcddb6fb99f9647fa4b5cb91a"
+  ],
   "processed_subpages": {
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-01T08:53:45.278679",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-01T12:12:36.109795",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30042026": "2026-06-15T16:37:19.445348",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31032026": "2026-06-15T16:37:19.616458",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-28022026": "2026-06-15T16:37:19.823859",
@@ -7238,10 +7287,10 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a3b57f8c5a8b66e840fb500": "2026-06-24T05:51:18.586832",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a3bbc2c3166250aff0c5399": "2026-06-24T12:10:51.630083",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a3cb666ddeb0093250496da": "2026-06-25T07:55:43.096420",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-01T08:53:40.412906",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-01T08:53:39.021951",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-01T08:53:37.691082",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-07-01T08:53:43.717384"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-01T12:12:35.731386",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-01T12:12:34.675483",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-01T12:12:33.316345",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-07-01T12:12:34.311921"
   },
   "scraper_health": {
     "ugc_net_notices": {
