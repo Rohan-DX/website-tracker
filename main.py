@@ -474,13 +474,13 @@ def main():
             
             fail_count = state["scraper_health"][site_id]["fail_count"]
             if fail_count == 3:
-                from telegram_bot import escape_code_span
+                from telegram_bot import escape_html
                 alert_text = (
-                    f"⚠️ *SCRAPER FAILURE WARNING*\n\n"
-                    f"Site: `{escape_code_span(site['name'])}` \\(`{escape_code_span(site_id)}`\\)\n"
-                    f"Consecutive Failures: `{fail_count}`\n"
-                    f"Last Error: `{escape_code_span(str(error)[:200])}`\n\n"
-                    f"Please check the selectors or portal status\\."
+                    f"⚠️ <b>SCRAPER FAILURE WARNING</b>\n\n"
+                    f"Site: <code>{escape_html(site['name'])}</code> (<code>{escape_html(site_id)}</code>)\n"
+                    f"Consecutive Failures: <code>{fail_count}</code>\n"
+                    f"Last Error: <code>{escape_html(str(error)[:200])}</code>\n\n"
+                    f"Please check the selectors or portal status."
                 )
                 bot.send_message(alert_text)
             continue
@@ -596,17 +596,18 @@ def main():
                     message_text = bot.format_hse_message(hse_data)
                 else:
                     # Generic format
-                    from telegram_bot import escape_markdown_v2, escape_link_url
-                    escaped_title = escape_markdown_v2(title)
-                    escaped_link = escape_link_url(link)
-                    escaped_site_name = escape_markdown_v2(site["name"])
+                    from telegram_bot import escape_html
+                    escaped_title = escape_html(title)
+                    escaped_link = link
+                    escaped_site_name = escape_html(site["name"])
                     
                     message_text = (
-                        f"📢 *New Update from {escaped_site_name}*\n\n"
+                        f"📢 <b>New Update from {escaped_site_name}</b>\n"
+                        "━━━━━━━━━━━━━━━━━━━━━━\n"
                         f"{escaped_title}\n\n"
                     )
                     if escaped_link:
-                        message_text += f"[Link]({escaped_link})"
+                        message_text += f'<a href="{escaped_link}">Link</a>'
 
                 # Send Alert
                 logger.info(f"Sending Telegram Alert for notification: {title}")
