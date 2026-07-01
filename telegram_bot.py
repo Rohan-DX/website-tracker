@@ -186,6 +186,22 @@ class TelegramBot:
         cleaned_text = cleaned_text.replace("<hr/>", "━━━━━━━━━━━━━━━━━━━━━━").replace("<hr>", "━━━━━━━━━━━━━━━━━━━━━━")
         cleaned_text = re.sub(r'<tg-datetime[^>]*>(.*?)</tg-datetime>', r'<b>\1</b>', cleaned_text)
         
+        # Clean additional Rich HTML elements (sub, sup, mark, tables, and lists) for legacy rendering
+        cleaned_text = cleaned_text.replace("<sub>", "(").replace("</sub>", ")")
+        cleaned_text = cleaned_text.replace("<sup>", "^(").replace("</sup>", ")")
+        cleaned_text = cleaned_text.replace("<mark>", "<b>").replace("</mark>", "</b>")
+        cleaned_text = cleaned_text.replace("<ul>", "").replace("</ul>", "")
+        cleaned_text = cleaned_text.replace("<ol>", "").replace("</ol>", "")
+        cleaned_text = cleaned_text.replace("<li>", "• ").replace("</li>", "\n")
+        
+        if "<table>" in cleaned_text or "<table " in cleaned_text:
+            cleaned_text = cleaned_text.replace("<table>", "").replace("</table>", "")
+            cleaned_text = cleaned_text.replace("<thead>", "").replace("</thead>", "")
+            cleaned_text = cleaned_text.replace("<tbody>", "").replace("</tbody>", "")
+            cleaned_text = cleaned_text.replace("<tr>", "").replace("</tr>", "\n")
+            cleaned_text = cleaned_text.replace("<th>", "<b>").replace("</th>", "</b> | ")
+            cleaned_text = cleaned_text.replace("<td>", "").replace("</td>", " | ")
+        
         if len(cleaned_text) > 4096:
             cleaned_text = cleaned_text[:4090] + "..."
 
