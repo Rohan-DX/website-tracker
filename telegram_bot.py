@@ -101,14 +101,29 @@ def get_relative_date_string(date_str):
 def format_telegram_time(date_str, fallback="N/A"):
     """
     Formats a date string for Telegram HTML, appending a natively computed relative date string.
+    Uses the new <tg-datetime> tag for rich dates if parseable.
     """
     if date_str and date_str != "N/A":
         escaped_date = escape_html(date_str)
+        iso_date = ""
+        ts = date_to_unix(date_str)
+        if ts:
+            try:
+                iso_date = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+            except Exception:
+                pass
+        
         relative = get_relative_date_string(date_str)
+        
+        if iso_date:
+            date_html = f'<tg-datetime datetime="{iso_date}">{escaped_date}</tg-datetime>'
+        else:
+            date_html = escaped_date
+            
         if relative:
             escaped_relative = escape_html(relative)
-            return f"{escaped_date} <i>({escaped_relative})</i>"
-        return escaped_date
+            return f"{date_html} <i>({escaped_relative})</i>"
+        return date_html
     return escape_html(fallback)
 
 class TelegramBot:
@@ -123,53 +138,90 @@ class TelegramBot:
     def send_message(self, text, parse_mode="HTML"):
         """
         Sends a message to the configured Telegram chat.
+        Attempts to use sendRichMessage (HTML) for advanced rendering,
+        falling back to legacy sendMessage (HTML) if unsupported or failed.
         """
         if not self.is_configured():
             logger.warning("Telegram Bot is not configured. Skipping message. "
                            "(Provide TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID)")
             return False
 
-        # Fallback truncation: if still > 4096 despite raw caps, strip formatting and slice plain text
-        if len(text) > 4096:
-            logger.warning(f"Message length ({len(text)}) exceeds Telegram limit. Truncating and stripping formatting.")
-            text = text[:4090] + "..."
-            parse_mode = None
+        # Fallback truncation if too long for Rich Message (limit is 32,768 characters)
+        if len(text) > 32768:
+            logger.warning(f"Message length ({len(text)}) exceeds Telegram Rich Message limit. Truncating.")
+            text = text[:32760] + "..."
 
-        url = f"{self.base_url}/sendMessage"
-        payload = {
+        # 1. Attempt sendRichMessage (API 10.1+)
+        url_rich = f"{self.base_url}/sendRichMessage"
+        payload_rich = {
             "chat_id": self.chat_id,
-            "text": text,
-            "disable_web_page_preview": False
+            "rich_message": {
+                "html": text
+            }
         }
-        if parse_mode:
-            payload["parse_mode"] = parse_mode
-
+        
         try:
-            logger.info(f"Sending message to Telegram chat {self.chat_id}...")
-            r = requests.post(url, json=payload, timeout=15)
+            logger.info(f"Attempting to send rich message via sendRichMessage to {self.chat_id}...")
+            r = requests.post(url_rich, json=payload_rich, timeout=15)
             
             # Handle rate limiting (HTTP 429)
             if r.status_code == 429:
                 retry_after = r.json().get("parameters", {}).get("retry_after", 5)
                 logger.warning(f"Telegram rate limited. Retrying after {retry_after}s...")
                 time.sleep(retry_after)
-                r = requests.post(url, json=payload, timeout=15)
+                r = requests.post(url_rich, json=payload_rich, timeout=15)
+                
+            if r.status_code == 200:
+                logger.info("Telegram rich message sent successfully via sendRichMessage.")
+                return True
+            else:
+                logger.warning(f"sendRichMessage failed (status {r.status_code}): {r.text}. Falling back to sendMessage HTML...")
+        except Exception as e:
+            logger.warning(f"Error calling sendRichMessage: {e}. Falling back to sendMessage HTML...")
 
-            # Fallback if HTML entities fail to parse (HTTP 400 with 'can\'t parse entities')
+        # 2. Fallback: Clean HTML text to use ONLY legacy supported HTML tags
+        cleaned_text = text
+        cleaned_text = cleaned_text.replace("<h3>", "<b>").replace("</h3>", "</b>\n")
+        cleaned_text = cleaned_text.replace("<h4>", "<b>").replace("</h4>", "</b>\n")
+        cleaned_text = cleaned_text.replace("<hr/>", "━━━━━━━━━━━━━━━━━━━━━━").replace("<hr>", "━━━━━━━━━━━━━━━━━━━━━━")
+        cleaned_text = re.sub(r'<tg-datetime[^>]*>(.*?)</tg-datetime>', r'<b>\1</b>', cleaned_text)
+        
+        if len(cleaned_text) > 4096:
+            cleaned_text = cleaned_text[:4090] + "..."
+
+        url_legacy = f"{self.base_url}/sendMessage"
+        payload_legacy = {
+            "chat_id": self.chat_id,
+            "text": cleaned_text,
+            "disable_web_page_preview": False,
+            "parse_mode": "HTML"
+        }
+
+        try:
+            logger.info("Sending message via legacy sendMessage HTML...")
+            r = requests.post(url_legacy, json=payload_legacy, timeout=15)
+            if r.status_code == 429:
+                retry_after = r.json().get("parameters", {}).get("retry_after", 5)
+                time.sleep(retry_after)
+                r = requests.post(url_legacy, json=payload_legacy, timeout=15)
+
+            # Fallback to plain text if still fails to parse
             if r.status_code == 400 and "can't parse entities" in r.text:
-                logger.warning("Telegram failed to parse HTML entities. Retrying as plain text...")
-                payload_fallback = payload.copy()
+                logger.warning("Telegram failed to parse legacy HTML entities. Retrying as plain text...")
+                payload_fallback = payload_legacy.copy()
                 payload_fallback.pop("parse_mode", None)
-                r = requests.post(url, json=payload_fallback, timeout=15)
+                plain_text = re.sub(r'<[^>]*>', '', cleaned_text)
+                payload_fallback["text"] = plain_text
+                r = requests.post(url_legacy, json=payload_fallback, timeout=15)
 
             if r.status_code == 200:
-                logger.info("Telegram message sent successfully.")
+                logger.info("Telegram message sent successfully via legacy fallback.")
                 return True
             else:
                 logger.error(f"Failed to send Telegram message. Status: {r.status_code}, Response: {r.text}")
                 return False
         except Exception as e:
-            logger.error(f"Error calling Telegram API: {e}")
+            logger.error(f"Error calling legacy Telegram API: {e}")
             return False
 
     def format_kpsc_message(self, data):

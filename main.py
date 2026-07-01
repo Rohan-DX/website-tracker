@@ -362,32 +362,32 @@ def run_daily_summary(state, config, bot):
             grouped[site_id] = []
         grouped[site_id].append(notif)
 
-    from telegram_bot import escape_markdown_v2, escape_link_url, format_blockquote
+    from telegram_bot import escape_html, format_blockquote
     
     date_display = now.strftime("%d %B %Y")
     summary_msg = (
-        "📋 *DAILY DIGEST*\n"
-        "━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"📅 *Date:* {escape_markdown_v2(date_display)}\n\n"
+        "<h3>📋 DAILY DIGEST</h3>\n"
+        "<hr/>\n"
+        f"📅 <b>Date:</b> {escape_html(date_display)}\n\n"
     )
     
     for site_id, items in grouped.items():
-        site_name = escape_markdown_v2(site_id.upper().replace("_", " "))
-        summary_msg += f"🔸 *{site_name}* \\({len(items)}\\):\n"
+        site_name = escape_html(site_id.upper().replace("_", " "))
+        summary_msg += f"🔸 <b>{site_name}</b> ({len(items)}):\n"
         site_digest = ""
         for idx, item in enumerate(items[:10], 1): # Limit to 10 per site in summary to prevent message size limit
-            title_esc = escape_markdown_v2(item.get("title", "N/A"))
-            link_esc = escape_link_url(item.get("link", ""))
+            title_esc = escape_html(item.get("title", "N/A"))
+            link_esc = item.get("link", "")
             if link_esc:
-                site_digest += f"{idx}\\. [{title_esc}]({link_esc})\n"
+                site_digest += f'{idx}. <a href="{link_esc}">{title_esc}</a>\n'
             else:
-                site_digest += f"{idx}\\. {title_esc}\n"
+                site_digest += f"{idx}. {title_esc}\n"
         if len(items) > 10:
-            site_digest += f"\\+ {len(items) - 10} more notifications\n"
+            site_digest += f"+ {len(items) - 10} more notifications\n"
             
         summary_msg += format_blockquote(site_digest) + "\n\n"
 
-    summary_msg += "━━━━━━━━━━━━━━━━━━━━━━"
+    summary_msg += "<hr/>"
 
     # Send message
     success = bot.send_message(summary_msg)
@@ -602,12 +602,12 @@ def main():
                     escaped_site_name = escape_html(site["name"])
                     
                     message_text = (
-                        f"📢 <b>New Update from {escaped_site_name}</b>\n"
-                        "━━━━━━━━━━━━━━━━━━━━━━\n"
-                        f"{escaped_title}\n\n"
+                        f"<h3>📢 New Update from {escaped_site_name}</h3>\n"
+                        "<hr/>\n"
+                        f"<blockquote>{escaped_title}</blockquote>\n\n"
                     )
                     if escaped_link:
-                        message_text += f'<a href="{escaped_link}">Link</a>'
+                        message_text += f'<h4>🔗 Link</h4>\n📥 <a href="{escaped_link}">View Link</a>'
 
                 # Send Alert
                 logger.info(f"Sending Telegram Alert for notification: {title}")
