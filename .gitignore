@@ -16,3 +16,4 @@ test_notifications.csv
 # State and CSV data (to be committed by Actions, ignored locally to prevent manual commit pollution)
 state.json
 notifications.csv
+send_test_alert.py
