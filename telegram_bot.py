@@ -186,12 +186,13 @@ class TelegramBot:
         cleaned_text = cleaned_text.replace("<hr/>", "━━━━━━━━━━━━━━━━━━━━━━").replace("<hr>", "━━━━━━━━━━━━━━━━━━━━━━")
         cleaned_text = re.sub(r'<tg-datetime[^>]*>(.*?)</tg-datetime>', r'<b>\1</b>', cleaned_text)
         
-        # Clean additional Rich HTML elements (sub, sup, mark, tables, and lists) for legacy rendering
+        # Clean additional Rich HTML elements (sub, sup, mark, tables, lists, and paragraphs) for legacy rendering
         cleaned_text = cleaned_text.replace("<sub>", "(").replace("</sub>", ")")
         cleaned_text = cleaned_text.replace("<sup>", "^(").replace("</sup>", ")")
         cleaned_text = cleaned_text.replace("<mark>", "<b>").replace("</mark>", "</b>")
         cleaned_text = cleaned_text.replace("<ul>", "").replace("</ul>", "")
         cleaned_text = cleaned_text.replace("<ol>", "").replace("</ol>", "")
+        cleaned_text = cleaned_text.replace("<p>", "").replace("</p>", "\n")
         cleaned_text = cleaned_text.replace("<li>", "• ").replace("</li>", "\n")
         
         if "<table>" in cleaned_text or "<table " in cleaned_text:

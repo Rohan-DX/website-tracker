@@ -362,30 +362,34 @@ def run_daily_summary(state, config, bot):
             grouped[site_id] = []
         grouped[site_id].append(notif)
 
-    from telegram_bot import escape_html, format_blockquote
+    from telegram_bot import escape_html
     
+    iso_date = now.strftime("%Y-%m-%d")
     date_display = now.strftime("%d %B %Y")
     summary_msg = (
         "<h3>📋 DAILY DIGEST</h3>\n"
         "<hr/>\n"
-        f"📅 <b>Date:</b> {escape_html(date_display)}\n\n"
+        f'📅 <b>Date:</b> <tg-datetime datetime="{iso_date}">{date_display}</tg-datetime>\n\n'
     )
     
     for site_id, items in grouped.items():
         site_name = escape_html(site_id.upper().replace("_", " "))
-        summary_msg += f"🔸 <b>{site_name}</b> ({len(items)}):\n"
-        site_digest = ""
-        for idx, item in enumerate(items[:10], 1): # Limit to 10 per site in summary to prevent message size limit
+        summary_msg += f"<h4>🔸 {site_name} ({len(items)})</h4>\n"
+        
+        site_digest = "<ol>\n"
+        for item in items[:10]:
             title_esc = escape_html(item.get("title", "N/A"))
             link_esc = item.get("link", "")
             if link_esc:
-                site_digest += f'{idx}. <a href="{link_esc}">{title_esc}</a>\n'
+                site_digest += f'<li><a href="{link_esc}">{title_esc}</a></li>\n'
             else:
-                site_digest += f"{idx}. {title_esc}\n"
+                site_digest += f"<li>{title_esc}</li>\n"
+        site_digest += "</ol>\n"
+        
         if len(items) > 10:
-            site_digest += f"+ {len(items) - 10} more notifications\n"
+            site_digest += f"<p>+ {len(items) - 10} more notifications</p>\n"
             
-        summary_msg += format_blockquote(site_digest) + "\n\n"
+        summary_msg += site_digest + "\n"
 
     summary_msg += "<hr/>"
 
