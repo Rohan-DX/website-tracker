@@ -101,22 +101,15 @@ def get_relative_date_string(date_str):
 def format_telegram_time(date_str, fallback="N/A"):
     """
     Formats a date string for Telegram HTML, appending a natively computed relative date string.
-    Uses the new <tg-datetime> tag for rich dates if parseable.
+    Uses the new <tg-time> tag for rich dates if parseable.
     """
     if date_str and date_str != "N/A":
         escaped_date = escape_html(date_str)
-        iso_date = ""
         ts = date_to_unix(date_str)
-        if ts:
-            try:
-                iso_date = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
-            except Exception:
-                pass
-        
         relative = get_relative_date_string(date_str)
         
-        if iso_date:
-            date_html = f'<tg-datetime datetime="{iso_date}">{escaped_date}</tg-datetime>'
+        if ts:
+            date_html = f'<tg-time unix="{ts}" format="D">{escaped_date}</tg-time>'
         else:
             date_html = escaped_date
             
@@ -184,7 +177,8 @@ class TelegramBot:
         cleaned_text = cleaned_text.replace("<h3>", "<b>").replace("</h3>", "</b>\n")
         cleaned_text = cleaned_text.replace("<h4>", "<b>").replace("</h4>", "</b>\n")
         cleaned_text = cleaned_text.replace("<hr/>", "━━━━━━━━━━━━━━━━━━━━━━").replace("<hr>", "━━━━━━━━━━━━━━━━━━━━━━")
-        cleaned_text = re.sub(r'<tg-datetime[^>]*>(.*?)</tg-datetime>', r'<b>\1</b>', cleaned_text)
+        cleaned_text = cleaned_text.replace("<br/>", "\n").replace("<br>", "\n")
+        cleaned_text = re.sub(r'<tg-time[^>]*>(.*?)</tg-time>', r'<b>\1</b>', cleaned_text)
         
         # Clean additional Rich HTML elements (sub, sup, mark, tables, lists, and paragraphs) for legacy rendering
         cleaned_text = cleaned_text.replace("<sub>", "(").replace("</sub>", ")")
@@ -272,15 +266,15 @@ class TelegramBot:
         msg = (
             "<h3>🔔 NEW KERALA PSC NOTIFICATION</h3>\n"
             "<hr/>\n"
-            f"📌 <b>Post:</b> <code>{post_name}</code>\n"
-            f"🗂️ <b>Category No:</b> <code>{category_number}</code>\n"
-            f"🏢 <b>Department:</b> <code>{department}</code>\n"
-            f"💰 <b>Pay Scale:</b> <code>{pay_scale}</code>\n"
+            f"📌 <b>Post:</b> <code>{post_name}</code><br/>\n"
+            f"🗂️ <b>Category No:</b> <code>{category_number}</code><br/>\n"
+            f"🏢 <b>Department:</b> <code>{department}</code><br/>\n"
+            f"💰 <b>Pay Scale:</b> <code>{pay_scale}</code><br/>\n"
             f"📅 <b>Last Date:</b> {last_date_display}\n\n"
             f"<h4>⚙️ Qualifications</h4>\n{qualification}\n\n"
             f"<h4>👤 Age Limit</h4>\n{age_limit}\n\n"
             "<h4>🔗 Quick Links</h4>\n"
-            f"📥 {pdf_link}\n"
+            f"📥 {pdf_link}<br/>\n"
             f"🌐 {notif_link}\n"
             "<hr/>"
         )
@@ -315,13 +309,13 @@ class TelegramBot:
         msg = (
             "<h3>🎓 UGC NET OFFICIAL UPDATE</h3>\n"
             "<hr/>\n"
-            f"📢 <b>Title:</b> <code>{title}</code>\n"
-            f"🏫 <b>Session:</b> <code>{examination_session}</code>\n"
+            f"📢 <b>Title:</b> <code>{title}</code><br/>\n"
+            f"🏫 <b>Session:</b> <code>{examination_session}</code><br/>\n"
             f"📅 <b>Published:</b> {date_display}\n\n"
             f"<h4>📝 Summary</h4>\n{summary}\n\n"
             f"<h4>⏱️ Dates & Deadlines</h4>\n{important_dates}\n\n"
             "<h4>🔗 Quick Links</h4>\n"
-            f"📥 {pdf_link}\n"
+            f"📥 {pdf_link}<br/>\n"
             f"🌐 {notice_link}\n"
             "<hr/>"
         )
@@ -347,12 +341,12 @@ class TelegramBot:
         msg = (
             "<h3>📢 HSE KERALA CIRCULAR / NOTICE</h3>\n"
             "<hr/>\n"
-            f"📌 <b>Title:</b> <code>{title}</code>\n"
-            f"🏢 <b>Type:</b> <code>{notice_type}</code>\n"
-            f"🗂️ <b>Ref Number:</b> <code>{ref_number}</code>\n"
+            f"📌 <b>Title:</b> <code>{title}</code><br/>\n"
+            f"🏢 <b>Type:</b> <code>{notice_type}</code><br/>\n"
+            f"🗂️ <b>Ref Number:</b> <code>{ref_number}</code><br/>\n"
             f"📅 <b>Ref Date:</b> {date_display}\n\n"
             "<h4>🔗 Quick Links</h4>\n"
-            f"📥 {pdf_link}\n"
+            f"📥 {pdf_link}<br/>\n"
             f"🌐 {notice_link}\n"
             "<hr/>"
         )
