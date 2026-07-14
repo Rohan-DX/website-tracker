@@ -128,10 +128,10 @@ class TelegramBot:
     def is_configured(self):
         return bool(self.token and self.chat_id)
 
-    def send_message(self, text, parse_mode="HTML"):
+    def send_message(self, text=None, parse_mode="HTML", media=None, blocks=None):
         """
         Sends a message to the configured Telegram chat.
-        Attempts to use sendRichMessage (HTML) for advanced rendering,
+        Attempts to use sendRichMessage (HTML/blocks/media) for advanced rendering,
         falling back to legacy sendMessage (HTML) if unsupported or failed.
         """
         if not self.is_configured():
@@ -139,18 +139,25 @@ class TelegramBot:
                            "(Provide TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID)")
             return False
 
-        # Fallback truncation if too long for Rich Message (limit is 32,768 characters)
-        if len(text) > 32768:
-            logger.warning(f"Message length ({len(text)}) exceeds Telegram Rich Message limit. Truncating.")
-            text = text[:32760] + "..."
+        # Build the rich message payload based on the new Bot API 10.2 spec
+        rich_message_obj = {}
+        if text:
+            # Check length for text input
+            if len(text) > 32768:
+                logger.warning(f"Message length ({len(text)}) exceeds Telegram Rich Message limit. Truncating.")
+                text = text[:32760] + "..."
+            rich_message_obj["html"] = text
+            
+        if media:
+            rich_message_obj["media"] = media
+        if blocks:
+            rich_message_obj["blocks"] = blocks
 
         # 1. Attempt sendRichMessage (API 10.1+)
         url_rich = f"{self.base_url}/sendRichMessage"
         payload_rich = {
             "chat_id": self.chat_id,
-            "rich_message": {
-                "html": text
-            }
+            "rich_message": rich_message_obj
         }
         
         try:
@@ -173,6 +180,10 @@ class TelegramBot:
             logger.warning(f"Error calling sendRichMessage: {e}. Falling back to sendMessage HTML...")
 
         # 2. Fallback: Clean HTML text to use ONLY legacy supported HTML tags
+        if not text:
+            logger.warning("No HTML text content to fallback to legacy sendMessage.")
+            return False
+
         cleaned_text = text
         cleaned_text = cleaned_text.replace("<h3>", "<b>").replace("</h3>", "</b>\n")
         cleaned_text = cleaned_text.replace("<h4>", "<b>").replace("</h4>", "</b>\n")
