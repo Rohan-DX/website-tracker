@@ -1,6 +1,6 @@
 {
-  "last_run": "2026-07-16T17:56:26.826937",
-  "daily_summary_sent_date": "2026-07-15",
+  "last_run": "2026-07-16T19:24:20.311519",
+  "daily_summary_sent_date": "2026-07-16",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
       "title": "Dairy Extension Officer - Dairy Development (Cat.No.23/2026)",
@@ -7413,70 +7413,61 @@
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a587dab0cd9f0fb2b049db2",
       "timestamp": "2026-07-16T07:02:18.495213",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "1bf896c3a0f2f4124ff0209c266d9a36f02d96dd280bf8fcbf3c69b4f828c1e8": {
       "title": "PROBATION - PRINCIPAL - SREEJA SREEDHAR R",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58cdaa9642008c5d007a5d",
       "timestamp": "2026-07-16T13:02:54.093381",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "fe07b5cab49e69bf2528fa9e943bf740c06365aa5b0776d15380ee07674269e0": {
       "title": "PROBATION - PRINCIPAL - SANTHOSH KUMAR P",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58cd045f9ac487b00fa101",
       "timestamp": "2026-07-16T13:02:57.585409",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "dcc624f648270cf2194c328bf2345a78899737b5062d042e81f7436bd0baec53": {
       "title": "PROBATION - PRINCIPAL - SANTHOSH T B",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58ccacfca0b0821b095662",
       "timestamp": "2026-07-16T13:03:00.895192",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "2b9c96e9e191b788deee3c64508a045c114825747751c1cc74e8e30ebc7251ae": {
       "title": "PROBATION - PRINCIPAL - VIJAYA P",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58cc25945bd50fdd0707b3",
       "timestamp": "2026-07-16T13:03:03.701837",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "cb0bc2e1cdf94a6a9a7b71350d3f358abf94550feb45739992549bce9eb02f36": {
       "title": "PROBATION - PRINCIPAL - MANJU P C",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58cbac52047d95fd07a518",
       "timestamp": "2026-07-16T13:03:07.065428",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "0570bd8c791acf47440b0ed6047b21efd7247d13001ff92770d95dc825e7fd9f": {
       "title": "CHARGE ALLOWANCE - SALOMI R",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58ca589642008c5d007a42",
       "timestamp": "2026-07-16T13:03:10.497334",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "477f4f8c6542b2a352b614e2c5fad095609820362aefe912cc3af3e0dcd38c6f": {
       "title": "SCOUT AND GUIDES NEW CIRCULAR",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a58bfe49642008c5d007a03",
       "timestamp": "2026-07-16T13:03:14.093872",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     }
   },
-  "pending_summary_notifications": [
-    "cc59e9e56baf03973154f9ddf591c1869f56d5fb799a8c7f49d19bd1dd49e05e",
-    "1bf896c3a0f2f4124ff0209c266d9a36f02d96dd280bf8fcbf3c69b4f828c1e8",
-    "fe07b5cab49e69bf2528fa9e943bf740c06365aa5b0776d15380ee07674269e0",
-    "dcc624f648270cf2194c328bf2345a78899737b5062d042e81f7436bd0baec53",
-    "2b9c96e9e191b788deee3c64508a045c114825747751c1cc74e8e30ebc7251ae",
-    "cb0bc2e1cdf94a6a9a7b71350d3f358abf94550feb45739992549bce9eb02f36",
-    "0570bd8c791acf47440b0ed6047b21efd7247d13001ff92770d95dc825e7fd9f",
-    "477f4f8c6542b2a352b614e2c5fad095609820362aefe912cc3af3e0dcd38c6f"
-  ],
+  "pending_summary_notifications": [],
   "processed_subpages": {
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-16T17:56:26.424858",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-16T19:24:20.289927",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30042026": "2026-06-15T16:37:19.445348",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31032026": "2026-06-15T16:37:19.616458",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-28022026": "2026-06-15T16:37:19.823859",
@@ -7537,7 +7528,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-02T04:15:54.024874",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-04T10:27:46.174479",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-04T10:27:45.129648",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-07-16T17:56:25.268666",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-07-16T19:24:18.559497",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a460e95bddb64d4780462e8": "2026-07-04T10:27:43.842378",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f105b93ae445630c9632": "2026-07-07T01:18:15.444319",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f08665202f22f3003531": "2026-07-06T08:41:57.133626",
@@ -7567,9 +7558,9 @@
     "https://www.keralapsc.gov.in/nil-notification-civil-excise-officer-trainee-male-part-ii-transfer-excise-department-cat-no5652025": "2026-07-15T06:00:12.145305",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a566d2698792f67c70707f8": "2026-07-16T11:20:17.030414",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a587d9a204aa5c05c0c393d": "2026-07-16T11:20:15.389301",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58cda252047d95fd07a527": "2026-07-16T17:56:24.970066",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58ccfdefaa90717b0fae89": "2026-07-16T17:56:25.898127",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58cca5efaa90717b0fae85": "2026-07-16T17:56:26.818050",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58cda252047d95fd07a527": "2026-07-16T19:24:17.966733",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58ccfdefaa90717b0fae89": "2026-07-16T19:24:18.919729",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58cca5efaa90717b0fae85": "2026-07-16T19:24:20.137493",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58cc1d66c1956ef00c89c2": "2026-07-16T13:02:50.407247",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58cba2dfb7e3c07e03051e": "2026-07-16T13:02:51.739742",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a58ca4fefaa90717b0fae72": "2026-07-16T13:02:52.786910",
