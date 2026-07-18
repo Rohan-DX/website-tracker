@@ -489,6 +489,15 @@ def main():
                 bot.send_message(alert_text)
             continue
         else:
+            previous_fail_count = state["scraper_health"][site_id]["fail_count"]
+            if previous_fail_count >= 3:
+                from telegram_bot import escape_html
+                recovery_text = (
+                    f"✅ <b>SCRAPER RECOVERED</b>\n\n"
+                    f"Site: <code>{escape_html(site['name'])}</code> (<code>{escape_html(site_id)}</code>)\n\n"
+                    f"The scraper has successfully connected and resumed normal operation."
+                )
+                bot.send_message(recovery_text)
             state["scraper_health"][site_id]["fail_count"] = 0
             state["scraper_health"][site_id]["last_fail_reason"] = None
 
