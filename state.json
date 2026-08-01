@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-08-01T14:01:03.342411",
+  "last_run": "2026-08-01T15:29:48.293203",
   "daily_summary_sent_date": "2026-07-31",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -7939,6 +7939,76 @@
       "timestamp": "2026-08-01T14:00:55.274760",
       "site_id": "kpsc_notifications",
       "sent_in_summary": false
+    },
+    "0f597a31cdba41b5135420fb1d757ecc0399b9ac8e241a79bed6c0bd3b9b35d6": {
+      "title": "Computer Assistant Grade-II (By-Transfer) - Government Secretariat/ Kerala Public Service Commission (Cat.No.085/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-85.pdf",
+      "timestamp": "2026-08-01T15:28:27.794548",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "02fc2d5ea13f2b60fa9828dfb4a356ad0a3e248ad3a1527e2bb797ba216e1ee8": {
+      "title": "Store Keeper - Apex Societies of Co-operative Sector in Kerala (MATSYAFED (Cat.No.086/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-86.pdf",
+      "timestamp": "2026-08-01T15:28:34.655636",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "2d0ed165a3a3c22cb6241d1750413defa7841ca1a5776ad39e188f0336057b53": {
+      "title": "Store Keeper Part II (Fishermen /Dependent of Fishermen Category - MATSYAFED (Cat.No.087/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-87.pdf",
+      "timestamp": "2026-08-01T15:28:41.257982",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "6abd63026efef85df1a9ecdb3c17f381bde8ee10422675e929dbd3a4227c69d6": {
+      "title": "Store Keeper - Part III - MATSYAFED (Cat.No.088/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-88.pdf",
+      "timestamp": "2026-08-01T15:28:53.280640",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "6096db1dfd5419c3585debd2b22d2b425e194dfcc07134d62694d9ffe9729e37": {
+      "title": "Electrician - Kerala State Film Development Corporation Limited. (Cat.No.089/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-89.pdf",
+      "timestamp": "2026-08-01T15:29:00.544188",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "b41bf6d2d6cfabc4d71331ca05b492f8dbc8c6951a71e32db7ee0249e25ea2fb": {
+      "title": "Junior Clerk - Part I (General Category) - Apex Societies of Co-operative Sector in Kerala (Cat.No.090/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-90.pdf",
+      "timestamp": "2026-08-01T15:29:06.564429",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "6367a61be5374288b22965808b0929103054ecd0c7b115a7e8e1d82fe3096ab9": {
+      "title": "Survey Lascars, Depot and Watch Station Watchers, Plantation Watchers and Maistries, etc.- Forest and Wildlife (Cat.No.091/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-91.pdf",
+      "timestamp": "2026-08-01T15:29:13.379272",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "9285ea43af53439144bc9f41a0f5a67bb2d1801aedd6f01138a5fb2b5d15e502": {
+      "title": "Assistant Professor (Kayachikitsa) (Special Recruitment for Scheduled Tribe only) - Ayurveda Medical Education (Cat.No.092/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-92.pdf",
+      "timestamp": "2026-08-01T15:29:19.447089",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "9256c3d108a2480038f8bc0019d7bc3940e326a6eb1be4f1eb7240125a149a07": {
+      "title": "Clerk (Kannada & Malayalam Knowing) 4th NCA - Various (Cat.No.121-123/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-121-123.pdf",
+      "timestamp": "2026-08-01T15:29:25.168982",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "9b200eaba447b71c316985722fe572fbfeafbf55c72c8ad033a69dc48bdf1762": {
+      "title": "Ayah (II NCA-LC/AI/Dheevara) - Various (Cat.No.127-128/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/Noti.%20127-128-26%20.pdf",
+      "timestamp": "2026-08-01T15:29:36.806374",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
   "pending_summary_notifications": [
@@ -7957,7 +8027,17 @@
     "99a3ca1f6c06c87125a3e7d3003716740af0412e36b16f9e96fedfee93c0dff2",
     "a9867a57dffb13c3c19559955a3f1d2523068f4a29a42b256ccbf6c45e4cce8d",
     "fc4d07d1ae99973379c6400dc688d1f54ae58e908b79d45254fee07587ef6305",
-    "72c1e048c023f0f5883718b92a227e883e39945625425624aebf69e7edbb4fb1"
+    "72c1e048c023f0f5883718b92a227e883e39945625425624aebf69e7edbb4fb1",
+    "0f597a31cdba41b5135420fb1d757ecc0399b9ac8e241a79bed6c0bd3b9b35d6",
+    "02fc2d5ea13f2b60fa9828dfb4a356ad0a3e248ad3a1527e2bb797ba216e1ee8",
+    "2d0ed165a3a3c22cb6241d1750413defa7841ca1a5776ad39e188f0336057b53",
+    "6abd63026efef85df1a9ecdb3c17f381bde8ee10422675e929dbd3a4227c69d6",
+    "6096db1dfd5419c3585debd2b22d2b425e194dfcc07134d62694d9ffe9729e37",
+    "b41bf6d2d6cfabc4d71331ca05b492f8dbc8c6951a71e32db7ee0249e25ea2fb",
+    "6367a61be5374288b22965808b0929103054ecd0c7b115a7e8e1d82fe3096ab9",
+    "9285ea43af53439144bc9f41a0f5a67bb2d1801aedd6f01138a5fb2b5d15e502",
+    "9256c3d108a2480038f8bc0019d7bc3940e326a6eb1be4f1eb7240125a149a07",
+    "9b200eaba447b71c316985722fe572fbfeafbf55c72c8ad033a69dc48bdf1762"
   ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
@@ -8021,7 +8101,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-02T04:15:54.024874",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-04T10:27:46.174479",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-04T10:27:45.129648",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-01T14:00:39.969342",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-01T15:28:27.770817",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a460e95bddb64d4780462e8": "2026-07-04T10:27:43.842378",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f105b93ae445630c9632": "2026-07-07T01:18:15.444319",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f08665202f22f3003531": "2026-07-06T08:41:57.133626",
@@ -8075,10 +8155,10 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a658105298e4694520ade05": "2026-07-31T04:44:12.452481",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6722016ef100341a06ea63": "2026-07-31T10:19:23.021337",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a685622b8538726d20747f0": "2026-08-01T12:14:07.349898",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-01T14:00:39.541121",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-01T14:00:38.791301",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-01T14:00:38.234811",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-01T14:00:37.304401"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-01T15:28:23.349661",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-01T15:28:26.529084",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-01T15:28:22.589971",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-01T15:28:21.608211"
   },
   "scraper_health": {
     "ugc_net_notices": {
