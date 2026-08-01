@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-08-01T12:14:11.713708",
+  "last_run": "2026-08-01T14:01:03.342411",
   "daily_summary_sent_date": "2026-07-31",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -7918,6 +7918,27 @@
       "timestamp": "2026-08-01T07:35:01.564860",
       "site_id": "kpsc_notifications",
       "sent_in_summary": false
+    },
+    "a9867a57dffb13c3c19559955a3f1d2523068f4a29a42b256ccbf6c45e4cce8d": {
+      "title": "PRINCIPAL VACANCY LIST- 2026",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a6de4a7ac131350f20b94af",
+      "timestamp": "2026-08-01T14:00:39.992190",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "fc4d07d1ae99973379c6400dc688d1f54ae58e908b79d45254fee07587ef6305": {
+      "title": "Agricultural Assistant Gr. II - Land Use Department (Cat.No.083/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-83.pdf",
+      "timestamp": "2026-08-01T14:00:43.269581",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "72c1e048c023f0f5883718b92a227e883e39945625425624aebf69e7edbb4fb1": {
+      "title": "Computer Assistant Grade-II - Government Secretariat/ Kerala Public Service Commissionetc. (Cat.No.084/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-84.pdf",
+      "timestamp": "2026-08-01T14:00:55.274760",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
   "pending_summary_notifications": [
@@ -7933,7 +7954,10 @@
     "08ddbf4278a8aa0486d78d93190a5ce0743ab26952c56160e724e668b7375900",
     "da4392482c7527df7efc34d4b87eadf64f2ed0b7dcb86a831f365b870a6d390a",
     "6a81650dea0aa55b02a750bbcae930d7a4d260a8afe63de27d99dc4bb117ea35",
-    "99a3ca1f6c06c87125a3e7d3003716740af0412e36b16f9e96fedfee93c0dff2"
+    "99a3ca1f6c06c87125a3e7d3003716740af0412e36b16f9e96fedfee93c0dff2",
+    "a9867a57dffb13c3c19559955a3f1d2523068f4a29a42b256ccbf6c45e4cce8d",
+    "fc4d07d1ae99973379c6400dc688d1f54ae58e908b79d45254fee07587ef6305",
+    "72c1e048c023f0f5883718b92a227e883e39945625425624aebf69e7edbb4fb1"
   ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
@@ -7997,7 +8021,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-02T04:15:54.024874",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-04T10:27:46.174479",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-04T10:27:45.129648",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-01T12:14:11.690251",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-01T14:00:39.969342",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a460e95bddb64d4780462e8": "2026-07-04T10:27:43.842378",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f105b93ae445630c9632": "2026-07-07T01:18:15.444319",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f08665202f22f3003531": "2026-07-06T08:41:57.133626",
@@ -8051,9 +8075,10 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a658105298e4694520ade05": "2026-07-31T04:44:12.452481",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6722016ef100341a06ea63": "2026-07-31T10:19:23.021337",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a685622b8538726d20747f0": "2026-08-01T12:14:07.349898",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-01T12:14:06.507143",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-01T12:14:10.728914",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-01T12:14:05.226726"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-01T14:00:39.541121",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-01T14:00:38.791301",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-01T14:00:38.234811",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-01T14:00:37.304401"
   },
   "scraper_health": {
     "ugc_net_notices": {
