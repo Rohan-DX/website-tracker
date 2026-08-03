@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-08-03T07:49:50.546469",
+  "last_run": "2026-08-03T11:33:55.566688",
   "daily_summary_sent_date": "2026-08-02",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -8079,6 +8079,34 @@
       "timestamp": "2026-08-03T07:49:42.887765",
       "site_id": "kpsc_notifications",
       "sent_in_summary": false
+    },
+    "3b88d52fc42e70fe4072215fb41bdc30f55453eee84705ce970fc94107724b80": {
+      "title": "COMMON POOL PRINCIPAL TRANSFER 2026-27 - TRANSFER APPLICATION - Reg.",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6a70739acea7411124038056",
+      "timestamp": "2026-08-03T11:33:13.882379",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "aaeda01d188a5755a48ead27672be3b359db78e771550a1ed08edefa00490621": {
+      "title": "Sales Assistant Gr.-II (V NCA-SC/LC/AI/OBC) PART-II (SOCIETY CATEGORY) - KSCCMF LTD. (COIRFED) (Cat.No.110&112/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-110-112-26.pdf",
+      "timestamp": "2026-08-03T11:33:17.112830",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "8c1429571c1816493a3cbe6e0976a006f85f87f31ce39424766a393f379d3250": {
+      "title": "Civil Excise Officer (Trainee) (I NCA-V/LC/AI/OBC/HN) - Kerala Excise And Prohibition (Cat.No.117-120/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/Noti.117%20-120-26%20.pdf",
+      "timestamp": "2026-08-03T11:33:24.295506",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "8e621bb470a58343d7240091da3c4f246e4764e45fb3e722406ca6ab3ba08a3c": {
+      "title": "Ayah (II NCA-LC/AI/Dheevara) - Various (Cat.No.127&128/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/Noti.%20127-128-26%20.pdf",
+      "timestamp": "2026-08-03T11:33:31.256919",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
   "pending_summary_notifications": [
@@ -8090,7 +8118,11 @@
     "f5eb46419b939c2e501369268354cead387236a327d3a18d0219a94bb8590de5",
     "983f6e64ebda28b664b4d91c0c249596ef6e91e82791f693e3d13382f409895f",
     "373b29c84c9f154bbc817149b8291bee16b574268538dbbfb192256230710339",
-    "3e57cf859af9b414e64b8c93a137aa5d726c9f029b46f9f440b324eb9459b0ba"
+    "3e57cf859af9b414e64b8c93a137aa5d726c9f029b46f9f440b324eb9459b0ba",
+    "3b88d52fc42e70fe4072215fb41bdc30f55453eee84705ce970fc94107724b80",
+    "aaeda01d188a5755a48ead27672be3b359db78e771550a1ed08edefa00490621",
+    "8c1429571c1816493a3cbe6e0976a006f85f87f31ce39424766a393f379d3250",
+    "8e621bb470a58343d7240091da3c4f246e4764e45fb3e722406ca6ab3ba08a3c"
   ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
@@ -8154,7 +8186,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-02T04:15:54.024874",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-04T10:27:46.174479",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-04T10:27:45.129648",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-03T07:48:49.089475",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-03T11:33:13.859918",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a460e95bddb64d4780462e8": "2026-07-04T10:27:43.842378",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f105b93ae445630c9632": "2026-07-07T01:18:15.444319",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f08665202f22f3003531": "2026-07-06T08:41:57.133626",
@@ -8209,12 +8241,13 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6722016ef100341a06ea63": "2026-07-31T10:19:23.021337",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a685622b8538726d20747f0": "2026-08-01T12:14:07.349898",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-02T04:05:14.176064",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-03T07:48:47.623806",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-03T11:33:12.314287",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-03T04:07:54.136208",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-03T04:07:52.775987",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6ed879010a43ec5e0f6b36": "2026-08-03T07:48:39.974432",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a702c52557199072d05e049": "2026-08-03T07:48:38.061343",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a702b500feadbcb0f0e0faf": "2026-08-03T07:48:39.027441"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a702c52557199072d05e049": "2026-08-03T11:33:10.044643",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a702b500feadbcb0f0e0faf": "2026-08-03T11:33:10.810959",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a70733ced6e8cf2160d4af6": "2026-08-03T11:33:09.027753"
   },
   "scraper_health": {
     "ugc_net_notices": {
