@@ -1,6 +1,6 @@
 {
   "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-  "request_timeout_seconds": 15,
+  "request_timeout_seconds": 30,
   "max_retries": 3,
   "retry_backoff_factor": 2,
   "daily_summary_time": "18:00",
@@ -33,7 +33,9 @@
       "url": "https://www.hseportal.kerala.gov.in/hse/public/icp/index",
       "type": "hse_kerala",
       "enabled": true,
-      "pdf_download": true
+      "pdf_download": true,
+      "request_timeout_seconds": 35,
+      "max_retries": 4
     }
   ]
 }

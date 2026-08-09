@@ -13,17 +13,19 @@ requests.packages.urllib3.disable_warnings(category=InsecureRequestWarning)
 
 logger = logging.getLogger("website_tracker")
 
-def fetch_url_with_retries(url, headers, timeout=15, max_retries=3, backoff_factor=2, verify=True):
+def fetch_url_with_retries(url, headers, timeout=30, max_retries=3, backoff_factor=2, verify=True):
     """
     Fetches a URL using requests with exponential backoff retries for transient errors.
+    Supports single timeout number or (connect_timeout, read_timeout) tuple.
     """
     last_exception = None
+    req_timeout = (timeout, timeout + 15) if isinstance(timeout, (int, float)) else timeout
 
     for attempt in range(1, max_retries + 1):
         try:
             logger.info(f"Fetching URL: {url} (Attempt {attempt}/{max_retries})")
             # verify parameter controls SSL verification
-            response = requests.get(url, headers=headers, timeout=timeout, verify=verify)
+            response = requests.get(url, headers=headers, timeout=req_timeout, verify=verify)
             
             # Treat 5xx server errors as transient and retry
             if response.status_code >= 500:
@@ -50,9 +52,15 @@ class WebScraper:
         self.headers = {
             "User-Agent": config.get("user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36")
         }
-        self.timeout = config.get("request_timeout_seconds", 15)
+        self.timeout = config.get("request_timeout_seconds", 30)
         self.max_retries = config.get("max_retries", 3)
         self.backoff_factor = config.get("retry_backoff_factor", 2)
+
+    def _get_site_params(self, site_config):
+        """Extracts timeout and max_retries for a site, falling back to global defaults."""
+        timeout = site_config.get("request_timeout_seconds", self.timeout)
+        max_retries = site_config.get("max_retries", self.max_retries)
+        return timeout, max_retries
 
 
     def scrape_kpsc_notifications(self, site_config, processed_subpages=None):
@@ -61,10 +69,11 @@ class WebScraper:
         First parses the main table, follows links to gazette pages, and extracts PDF links.
         """
         url = site_config["url"]
+        timeout, max_retries = self._get_site_params(site_config)
         logger.info(f"Starting scraping for Kerala PSC notifications from {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
+            url, self.headers, timeout, max_retries, self.backoff_factor, verify=False
         )
         soup = BeautifulSoup(response.text, "html.parser")
         
@@ -110,7 +119,7 @@ class WebScraper:
             # Visit the subpage to find individual PDF attachments
             try:
                 sub_response = fetch_url_with_retries(
-                    subpage_url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
+                    subpage_url, self.headers, timeout, max_retries, self.backoff_factor, verify=False
                 )
                 
                 # Mark as processed immediately since fetch succeeded
@@ -151,10 +160,11 @@ class WebScraper:
         Scrapes UGC NET public notices section.
         """
         url = site_config["url"]
+        timeout, max_retries = self._get_site_params(site_config)
         logger.info(f"Starting scraping for UGC NET notices from {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+            url, self.headers, timeout, max_retries, self.backoff_factor
         )
         soup = BeautifulSoup(response.text, "html.parser")
         
@@ -195,10 +205,11 @@ class WebScraper:
         Scrapes a standard RSS feed.
         """
         url = site_config["url"]
+        timeout, max_retries = self._get_site_params(site_config)
         logger.info(f"Scraping RSS feed: {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+            url, self.headers, timeout, max_retries, self.backoff_factor
         )
         
         items = []
@@ -238,10 +249,11 @@ class WebScraper:
         Scrapes a generic website based on link extraction.
         """
         url = site_config["url"]
+        timeout, max_retries = self._get_site_params(site_config)
         logger.info(f"Scraping generic website: {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor
+            url, self.headers, timeout, max_retries, self.backoff_factor
         )
         soup = BeautifulSoup(response.text, "html.parser")
         
@@ -271,10 +283,11 @@ class WebScraper:
         Parses table rows and views their JSON AJAX endpoint to extract attachments.
         """
         url = site_config["url"]
+        timeout, max_retries = self._get_site_params(site_config)
         logger.info(f"Starting scraping for HSE Kerala portal from {url}")
         
         response = fetch_url_with_retries(
-            url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
+            url, self.headers, timeout, max_retries, self.backoff_factor, verify=False
         )
         soup = BeautifulSoup(response.text, "html.parser")
         
@@ -315,7 +328,7 @@ class WebScraper:
             # Visit the JSON view URL to get the attachments
             try:
                 sub_response = fetch_url_with_retries(
-                    view_url, self.headers, self.timeout, self.max_retries, self.backoff_factor, verify=False
+                    view_url, self.headers, timeout, max_retries, self.backoff_factor, verify=False
                 )
                 
                 # Mark as processed immediately since fetch succeeded
