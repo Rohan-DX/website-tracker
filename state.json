@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-08-11T09:12:03.352225",
+  "last_run": "2026-08-11T10:16:20.041177",
   "daily_summary_sent_date": "2026-08-10",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -8156,9 +8156,50 @@
       "timestamp": "2026-08-10T09:42:11.116185",
       "site_id": "ugc_net_notices",
       "sent_in_summary": true
+    },
+    "07c13db4bc6192b527321bf5d054c40b5e4d55dde812a63f311b5b0e4448fefd": {
+      "title": "Store Keeper (Part-III) (Society Category) - MATSYAFED (Cat.No.088/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-88.pdf",
+      "timestamp": "2026-08-11T10:15:46.215883",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "128fdaebfa1509fe9cf9a5cf1575f2e4aca677958147b417c3bdb43e2e37eb70": {
+      "title": "Assistant Professor (Kayachikitsa) (SR for ST only) - Ayurveda Medical Education (Cat.No.092/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-92.pdf",
+      "timestamp": "2026-08-11T10:15:52.389678",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "d4ac4b69bba298c9fe1f73a9c21d3f435d23844b20535d4a7a6ba7282932671b": {
+      "title": "Clerk (SR from Among Ex-servicemen of ST only) - NCC / Sainik welfare (Cat.No.94/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-07/noti-94-26.pdf",
+      "timestamp": "2026-08-11T10:15:59.498396",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "695dd7cf66114c3d91f20b8a032dbeedc974be4cef132fb000334e1b68ef54fb": {
+      "title": "Forest Watcher (SR) - Forest & Wildlife (Cat.No.97/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-97-26.pdf",
+      "timestamp": "2026-08-11T10:16:05.195205",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "85cb080f7a22e851b3d473de7a689c5bd9c2a71da4c862771b34583ae83c8e1d": {
+      "title": "Jr.Assistant Part-II (Society Category) (VI NCA-SC) - Kerala Co-operative Milk Marketing Federation LTD. (Cat.No.107/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-08/noti-107-26.pdf",
+      "timestamp": "2026-08-11T10:16:13.784281",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "07c13db4bc6192b527321bf5d054c40b5e4d55dde812a63f311b5b0e4448fefd",
+    "128fdaebfa1509fe9cf9a5cf1575f2e4aca677958147b417c3bdb43e2e37eb70",
+    "d4ac4b69bba298c9fe1f73a9c21d3f435d23844b20535d4a7a6ba7282932671b",
+    "695dd7cf66114c3d91f20b8a032dbeedc974be4cef132fb000334e1b68ef54fb",
+    "85cb080f7a22e851b3d473de7a689c5bd9c2a71da4c862771b34583ae83c8e1d"
+  ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30042026": "2026-06-15T16:37:19.445348",
@@ -8221,7 +8262,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-02T04:15:54.024874",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-04T10:27:46.174479",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-04T10:27:45.129648",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-11T09:09:39.824879",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-11T10:12:59.006014",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a460e95bddb64d4780462e8": "2026-07-04T10:27:43.842378",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f105b93ae445630c9632": "2026-07-07T01:18:15.444319",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f08665202f22f3003531": "2026-07-06T08:41:57.133626",
@@ -8276,7 +8317,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6722016ef100341a06ea63": "2026-07-31T10:19:23.021337",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a685622b8538726d20747f0": "2026-08-01T12:14:07.349898",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-02T04:05:14.176064",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-11T09:09:33.730399",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-11T10:12:54.864448",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-03T04:07:54.136208",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-03T04:07:52.775987",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6ed879010a43ec5e0f6b36": "2026-08-03T07:48:39.974432",
@@ -8295,8 +8336,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 62,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7f61504f9190>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
+      "fail_count": 63,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7fa7adc48190>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
