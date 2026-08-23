@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-08-23T06:06:10.435186",
+  "last_run": "2026-08-23T07:05:28.342786",
   "daily_summary_sent_date": "2026-08-22",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -8277,7 +8277,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a42077ddf61326a7108084d": "2026-07-02T04:15:54.024874",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a4348d0881789810b0d984d": "2026-07-04T10:27:46.174479",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a43636d27861c77880f81d7": "2026-07-04T10:27:45.129648",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-23T06:03:32.092719",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30062026": "2026-08-23T07:02:43.841841",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a460e95bddb64d4780462e8": "2026-07-04T10:27:43.842378",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f105b93ae445630c9632": "2026-07-07T01:18:15.444319",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a48f08665202f22f3003531": "2026-07-06T08:41:57.133626",
@@ -8332,7 +8332,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6722016ef100341a06ea63": "2026-07-31T10:19:23.021337",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a685622b8538726d20747f0": "2026-08-01T12:14:07.349898",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-02T04:05:14.176064",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-23T06:03:31.132306",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-08-23T07:02:42.069564",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-03T04:07:54.136208",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-03T04:07:52.775987",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6ed879010a43ec5e0f6b36": "2026-08-03T07:48:39.974432",
@@ -8351,8 +8351,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 425,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7f889824dd90>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
+      "fail_count": 426,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7fe1a8a5df10>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
