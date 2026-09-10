@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-09-10T13:38:21.571917",
+  "last_run": "2026-09-10T17:15:13.214977",
   "daily_summary_sent_date": "2026-09-09",
   "seen_notifications": {
     "700855f18db74dfb5056bc04bc360b45e05601e464be57aeeb92cb6335900c1a": {
@@ -8604,6 +8604,13 @@
       "timestamp": "2026-09-10T13:38:18.717456",
       "site_id": "hse_kerala",
       "sent_in_summary": false
+    },
+    "1d7aadf0eadfa66b0f7addf89273ddf12862bd18caec774eb88d3249103c8bb7": {
+      "title": "Challenge of Provisional Answer Keys for UGC-NET June 2026 Re-Exam-reg.",
+      "link": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/09/202609101788985717.pdf",
+      "timestamp": "2026-09-10T17:15:11.236358",
+      "site_id": "ugc_net_notices",
+      "sent_in_summary": false
     }
   },
   "pending_summary_notifications": [
@@ -8611,7 +8618,8 @@
     "ae3c8317ddb6ea9efe026cb500cf35070d78ec287320645b2a1457a93a2b5712",
     "79651ecc876287040475a05a1ef971e8578e53407d6c792063ffd7e7b34788f2",
     "1ae8f134f33b3e338e3cb37001dda8617cc575a6007184d5c3b60df64fdbc7ef",
-    "49a49c10813cb30d8bfd538ff59600caddf416c5e0d18498fb543b7d0c0bba60"
+    "49a49c10813cb30d8bfd538ff59600caddf416c5e0d18498fb543b7d0c0bba60",
+    "1d7aadf0eadfa66b0f7addf89273ddf12862bd18caec774eb88d3249103c8bb7"
   ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
@@ -8730,7 +8738,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6722016ef100341a06ea63": "2026-07-31T10:19:23.021337",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a685622b8538726d20747f0": "2026-08-01T12:14:07.349898",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c2e55958521b7c00f6a5f": "2026-08-02T04:05:14.176064",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-09-10T13:38:18.697828",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30072026": "2026-09-10T17:15:11.212233",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6c8508498e1692e7016f22": "2026-08-03T04:07:54.136208",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6de49183999ea02f0c8ae7": "2026-08-03T04:07:52.775987",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a6ed879010a43ec5e0f6b36": "2026-08-03T07:48:39.974432",
@@ -8742,7 +8750,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a741b8fcfb73995c70c5104": "2026-08-08T17:50:51.131395",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a743b874f5af325d101d9a4": "2026-08-08T17:50:50.367719",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a74654ebacf6023ca08614e": "2026-08-08T17:50:49.373371",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-10T13:38:12.561206",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-10T17:15:10.233386",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a967223b3a8b0ae5f08bc14": "2026-09-02T06:18:39.621066",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a9122baddd9a79b7009924a": "2026-09-02T06:18:41.088712",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a8be93a5637d08fc707645d": "2026-09-02T01:19:55.493675",
@@ -8774,11 +8782,11 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa0f4698c2f8192bf074543": "2026-09-10T04:27:36.622198",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa13f748fca004a8505bd72": "2026-09-10T04:27:35.335370",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa159c5bbce809b9a0f0764": "2026-09-10T04:27:34.008370",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa25c92642222d7ea08e644": "2026-09-10T13:38:07.222693",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa2457bbb5edfe64e073695": "2026-09-10T13:38:08.760543",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa25c92642222d7ea08e644": "2026-09-10T17:15:07.501469",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa2457bbb5edfe64e073695": "2026-09-10T17:15:08.799022",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa244c9685f1f4d4d08b795": "2026-09-10T09:06:18.730024",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa2432a066d90fff405610a": "2026-09-10T09:06:19.740963",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa27750d1a8cd0b77005b74": "2026-09-10T13:38:06.166172"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aa27750d1a8cd0b77005b74": "2026-09-10T17:15:06.174161"
   },
   "scraper_health": {
     "ugc_net_notices": {
