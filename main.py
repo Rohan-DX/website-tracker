@@ -174,37 +174,18 @@ def save_state(state, config=None):
         active_site_ids = {site["id"] for site in config.get("websites", [])}
         seen_notifs = state["seen_notifications"]
         purged_notifs = {}
-        now = datetime.now()
-        ttl_days = config.get("state_ttl_days", 90)
-        purged_ttl_count = 0
         purged_site_count = 0
         
         for h, notif in seen_notifs.items():
             site_id = notif.get("site_id")
-            # 1. Purge inactive site entries (e.g. mgu_results)
-            if site_id not in active_site_ids:
+            # Only purge notifications belonging to websites that were explicitly removed from config
+            if site_id and site_id not in active_site_ids:
                 purged_site_count += 1
                 continue
-            
-            # 2. Purge entries older than 90 days
-            ts_str = notif.get("timestamp")
-            keep = True
-            if ts_str:
-                try:
-                    ts = datetime.fromisoformat(ts_str)
-                    if ts.tzinfo is not None:
-                        ts = ts.replace(tzinfo=None)
-                    if (now - ts).days > ttl_days:
-                        keep = False
-                        purged_ttl_count += 1
-                except Exception as e:
-                    logger.error(f"Error checking TTL for notification {h}: {e}")
-            
-            if keep:
-                purged_notifs[h] = notif
+            purged_notifs[h] = notif
         
-        if purged_ttl_count > 0 or purged_site_count > 0:
-            logger.info(f"State pruning: removed {purged_site_count} inactive site entries and {purged_ttl_count} expired entries.")
+        if purged_site_count > 0:
+            logger.info(f"State pruning: removed {purged_site_count} inactive site entries.")
             state["seen_notifications"] = purged_notifs
             
             # Cleanup pending list for purged entries
@@ -212,20 +193,6 @@ def save_state(state, config=None):
                 state["pending_summary_notifications"] = [
                     h for h in state["pending_summary_notifications"] if h in purged_notifs
                 ]
-        
-        # Prune processed subpages cache (TTL > 90 days)
-        if "processed_subpages" in state:
-            purged_subpages = {}
-            for url, ts_str in state["processed_subpages"].items():
-                try:
-                    ts = datetime.fromisoformat(ts_str)
-                    if ts.tzinfo is not None:
-                        ts = ts.replace(tzinfo=None)
-                    if (now - ts).days <= ttl_days:
-                        purged_subpages[url] = ts_str
-                except Exception:
-                    purged_subpages[url] = ts_str # Keep if unparseable
-            state["processed_subpages"] = purged_subpages
 
     db_url = os.getenv("DATABASE_URL")
     db_secret = os.getenv("DATABASE_SECRET")
@@ -502,6 +469,7 @@ def main():
             state["scraper_health"][site_id]["last_fail_reason"] = None
 
         try:
+            site_alerts_sent = 0
             for item in items:
                 # Standardize title and link for duplicate detection
                 title = item.get("result_title") or item.get("title") or "N/A"
@@ -622,12 +590,25 @@ def main():
                     if escaped_link:
                         message_text += f'<h4>🔗 Link</h4>\n📥 <a href="{escaped_link}">View Link</a>'
 
-                # Send Alert
-                logger.info(f"Sending Telegram Alert for notification: {title}")
-                bot.send_message(message_text)
-                
-                # Sleep to prevent Telegram rate limit issues
-                time.sleep(0.5)
+                # Safety Breaker: avoid flooding Telegram if an abnormal number of notifications appear at once
+                if site_alerts_sent >= 30:
+                    if site_alerts_sent == 30:
+                        from telegram_bot import escape_html
+                        warning_msg = (
+                            f"⚠️ <b>NOTIFICATION FLOOD SAFETY ACTIVATED</b>\n\n"
+                            f"Site: <code>{escape_html(site['name'])}</code>\n"
+                            f"Detected over 30 new notifications in a single run. Individual messaging paused to protect your inbox from spam. "
+                            f"Remaining items have been marked as seen and recorded to CSV."
+                        )
+                        bot.send_message(warning_msg)
+                    site_alerts_sent += 1
+                else:
+                    # Send Alert
+                    logger.info(f"Sending Telegram Alert for notification: {title}")
+                    bot.send_message(message_text)
+                    site_alerts_sent += 1
+                    # Sleep to prevent Telegram rate limit issues
+                    time.sleep(0.5)
                 
                 # Compile details for CSV export
                 csv_details = {}

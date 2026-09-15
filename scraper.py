@@ -1,6 +1,7 @@
 import re
 import time
 import logging
+from datetime import datetime
 import requests
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
@@ -111,6 +112,33 @@ class WebScraper:
                 logger.info(f"Skipping already processed KPSC subpage: {subpage_url}")
                 continue
 
+            # Check last date or gazette date to avoid scraping old gazettes
+            if len(cols) >= 3:
+                last_date_str = cols[2].text.strip()
+                try:
+                    # Parse dd-mm-yyyy or dd/mm/yyyy
+                    cleaned_date = re.sub(r'[^\d]', '-', last_date_str)
+                    parts = [int(p) for p in cleaned_date.split('-') if p]
+                    if len(parts) == 3:
+                        # parts: day, month, year
+                        last_dt = datetime(parts[2], parts[1], parts[0])
+                        # If application deadline passed more than 7 days ago, skip it
+                        if (datetime.now() - last_dt).days > 7:
+                            logger.info(f"Skipping expired KPSC gazette '{title_col.text.strip()}' (Deadline was {last_date_str})")
+                            continue
+                except Exception as e:
+                    logger.debug(f"Could not parse last date '{last_date_str}': {e}")
+
+            # Check gazette title year if last date was missing/unparseable
+            # If the gazette title clearly specifies a previous year (e.g. 2024 or 2025 when current year is 2026), skip it
+            current_year = datetime.now().year
+            year_matches = re.findall(r'\b(20\d{2})\b', title_col.text)
+            if year_matches:
+                gazette_year = max(int(y) for y in year_matches)
+                if gazette_year < current_year:
+                    logger.info(f"Skipping prior-year KPSC gazette '{title_col.text.strip()}'")
+                    continue
+
             gazette_title = title_col.text.strip().replace('\n', ' ')
             gazette_title = re.sub(r'\s+', ' ', gazette_title)
             
@@ -124,7 +152,6 @@ class WebScraper:
                 
                 # Mark as processed immediately since fetch succeeded
                 if processed_subpages is not None:
-                    from datetime import datetime
                     processed_subpages[subpage_url] = datetime.now().isoformat()
 
                 sub_soup = BeautifulSoup(sub_response.text, "html.parser")
@@ -333,7 +360,6 @@ class WebScraper:
                 
                 # Mark as processed immediately since fetch succeeded
                 if processed_subpages is not None:
-                    from datetime import datetime
                     processed_subpages[view_url] = datetime.now().isoformat()
 
                 sub_data = sub_response.json()
