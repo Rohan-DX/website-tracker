@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-09-18T09:49:01.919268",
+  "last_run": "2026-09-18T14:16:55.329897",
   "daily_summary_sent_date": "2026-09-17",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -6847,11 +6847,19 @@
       "timestamp": "2026-09-18T09:48:59.097197",
       "site_id": "hse_kerala",
       "sent_in_summary": false
+    },
+    "8804be2e26666bee132c7c10fa874f1c4a1c0cc6dce5b912e66460c7bbcdb7a8": {
+      "title": "HIGHER SECONDARY NSS NEW SFU UNITS APPROVED LIST",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6aad119a1ad69c6d87073071",
+      "timestamp": "2026-09-18T14:16:49.272612",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
     }
   },
   "pending_summary_notifications": [
     "f2ed1f4b41d6d297779cac3176459cbf47ed942b112b05bad3b9dd02e67dc7ce",
-    "2f43fd5dba03b948a14bcfd9a81d3436373fa4a22f1be8120fc6149584d8f7d9"
+    "2f43fd5dba03b948a14bcfd9a81d3436373fa4a22f1be8120fc6149584d8f7d9",
+    "8804be2e26666bee132c7c10fa874f1c4a1c0cc6dce5b912e66460c7bbcdb7a8"
   ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
@@ -6943,7 +6951,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a741b8fcfb73995c70c5104": "2026-08-08T17:50:51.131395",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a743b874f5af325d101d9a4": "2026-08-08T17:50:50.367719",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a74654ebacf6023ca08614e": "2026-08-08T17:50:49.373371",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-18T09:48:33.579198",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-18T14:16:44.967648",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a967223b3a8b0ae5f08bc14": "2026-09-02T06:18:39.621066",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a9122baddd9a79b7009924a": "2026-09-02T06:18:41.088712",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a8be93a5637d08fc707645d": "2026-09-02T01:19:55.493675",
@@ -7007,8 +7015,9 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aaa5cded6c286b1920290bf": "2026-09-17T10:21:31.152920",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aaa818d597e4b20760ebf96": "2026-09-18T05:04:19.193711",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aabf9fcc0980e397502ec5a": "2026-09-18T09:48:35.951360",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aacf5020cbc7e2ee50b9ebe": "2026-09-18T09:48:32.700025",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aacc9f6b89596744c08b0d0": "2026-09-18T09:48:34.652185"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aacf5020cbc7e2ee50b9ebe": "2026-09-18T14:16:48.554776",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aacc9f6b89596744c08b0d0": "2026-09-18T14:16:49.265038",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aad118a3dc08ba3fa0beb89": "2026-09-18T14:16:47.611446"
   },
   "scraper_health": {
     "ugc_net_notices": {
