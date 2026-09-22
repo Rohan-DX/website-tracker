@@ -1,6 +1,6 @@
 {
-  "last_run": "2026-09-22T17:35:16.027806",
-  "daily_summary_sent_date": "2026-09-21",
+  "last_run": "2026-09-22T20:29:39.698819",
+  "daily_summary_sent_date": "2026-09-22",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
       "title": "Public Notice regarding the release of Admit Card for the UGC-NET June 2026 examination",
@@ -6881,20 +6881,17 @@
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ab278f6d112a249630b0fa3",
       "timestamp": "2026-09-22T12:51:03.796814",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "49b14bb00b9c61edb599355ca2ad0ddf1c5b02391cc18fc2ed76cba419108360": {
       "title": "Circular - Revaluation, Scrutiny and Photocopy of answer script",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ab2339f66c66de4d70cca01",
       "timestamp": "2026-09-22T12:51:08.278271",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     }
   },
-  "pending_summary_notifications": [
-    "350e7991bc52db81087533ce2adfab10ddd2784ba805f231505d453b53838013",
-    "49b14bb00b9c61edb599355ca2ad0ddf1c5b02391cc18fc2ed76cba419108360"
-  ],
+  "pending_summary_notifications": [],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -6985,7 +6982,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a741b8fcfb73995c70c5104": "2026-08-08T17:50:51.131395",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a743b874f5af325d101d9a4": "2026-08-08T17:50:50.367719",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a74654ebacf6023ca08614e": "2026-08-08T17:50:49.373371",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-22T17:35:14.878929",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-22T20:29:35.720960",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a967223b3a8b0ae5f08bc14": "2026-09-02T06:18:39.621066",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a9122baddd9a79b7009924a": "2026-09-02T06:18:41.088712",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a8be93a5637d08fc707645d": "2026-09-02T01:19:55.493675",
@@ -7052,11 +7049,11 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aacf5020cbc7e2ee50b9ebe": "2026-09-19T10:46:50.943089",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aacc9f6b89596744c08b0d0": "2026-09-19T10:46:51.655907",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aad118a3dc08ba3fa0beb89": "2026-09-19T10:46:48.872641",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6c21a84bb4a5390492a6": "2026-09-22T17:35:16.020594",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6c21a84bb4a5390492a6": "2026-09-22T20:29:39.691615",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6b25cff10cda2101dbb5": "2026-09-22T07:34:08.931464",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6961e2fa729f8205eab1": "2026-09-22T07:34:10.012950",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab278e164fa07f0970e0c75": "2026-09-22T17:35:13.592663",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab23385c4cf31b3f202deb5": "2026-09-22T17:35:14.797768"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab278e164fa07f0970e0c75": "2026-09-22T20:29:34.733480",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab23385c4cf31b3f202deb5": "2026-09-22T20:29:38.189865"
   },
   "scraper_health": {
     "ugc_net_notices": {
