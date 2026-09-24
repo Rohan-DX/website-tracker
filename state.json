@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-09-24T01:28:29.370242",
+  "last_run": "2026-09-24T06:41:31.306613",
   "daily_summary_sent_date": "2026-09-23",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -6896,9 +6896,18 @@
       "timestamp": "2026-09-23T12:18:26.638562",
       "site_id": "hse_kerala",
       "sent_in_summary": true
+    },
+    "ad6aa2e6187325b2dd18117cbbf83c422c2e11bd3d14ac6512cbe9032b2d5e68": {
+      "title": "BPL MERIT CUM MEANS SCHOLARSHIP 2026-27 RENEWAL AMOUNT SANCTIONED",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ab4b8ba07136fedf302baf3",
+      "timestamp": "2026-09-24T06:41:24.367171",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "ad6aa2e6187325b2dd18117cbbf83c422c2e11bd3d14ac6512cbe9032b2d5e68"
+  ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -6989,7 +6998,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a741b8fcfb73995c70c5104": "2026-08-08T17:50:51.131395",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a743b874f5af325d101d9a4": "2026-08-08T17:50:50.367719",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a74654ebacf6023ca08614e": "2026-08-08T17:50:49.373371",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-24T01:28:29.349982",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-09-24T06:41:22.894688",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a967223b3a8b0ae5f08bc14": "2026-09-02T06:18:39.621066",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a9122baddd9a79b7009924a": "2026-09-02T06:18:41.088712",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a8be93a5637d08fc707645d": "2026-09-02T01:19:55.493675",
@@ -7059,9 +7068,10 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6c21a84bb4a5390492a6": "2026-09-23T06:44:05.597525",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6b25cff10cda2101dbb5": "2026-09-22T07:34:08.931464",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aae6961e2fa729f8205eab1": "2026-09-22T07:34:10.012950",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab278e164fa07f0970e0c75": "2026-09-24T01:28:27.824934",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab278e164fa07f0970e0c75": "2026-09-24T06:41:24.361625",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab23385c4cf31b3f202deb5": "2026-09-24T01:28:29.170875",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab39431c36642bbc40c7c3a": "2026-09-24T01:28:26.641239"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab39431c36642bbc40c7c3a": "2026-09-24T06:41:23.572924",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ab4b891e81daa2c960f80a9": "2026-09-24T06:41:22.789051"
   },
   "scraper_health": {
     "ugc_net_notices": {
