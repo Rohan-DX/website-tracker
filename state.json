@@ -1,6 +1,6 @@
 {
-  "last_run": "2026-10-01T14:31:10.638882",
-  "daily_summary_sent_date": "2026-09-30",
+  "last_run": "2026-10-01T19:54:44.983917",
+  "daily_summary_sent_date": "2026-10-01",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
       "title": "Public Notice regarding the release of Admit Card for the UGC-NET June 2026 examination",
@@ -7147,28 +7147,24 @@
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6abdfad973d2f35ede0ed5ca",
       "timestamp": "2026-10-01T07:04:17.140742",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "e970798d5806d0e85ea849f4d52fcfaf4c94775265f0369f7ed6366dad3a719b": {
       "title": "HIGHER SECONDARY NSS SATHYAPADHAM- GANDHI JAYANTHI",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6abe44ef9492788d5e09636d",
       "timestamp": "2026-10-01T14:31:01.071051",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     },
     "a282441603fc7c753c7a04b6ef08da258bfc20cf548f620964438e20c14d7afb": {
       "title": "PRINCIPAL TRANSFER NORMS - AMENDMENT ORDER",
       "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6abe3db4156ba0cc7505c148",
       "timestamp": "2026-10-01T14:31:06.520197",
       "site_id": "hse_kerala",
-      "sent_in_summary": false
+      "sent_in_summary": true
     }
   },
-  "pending_summary_notifications": [
-    "c77326bac40135923e2ccb483df79354c087d6d63248208ba6f248bf8d001022",
-    "e970798d5806d0e85ea849f4d52fcfaf4c94775265f0369f7ed6366dad3a719b",
-    "a282441603fc7c753c7a04b6ef08da258bfc20cf548f620964438e20c14d7afb"
-  ],
+  "pending_summary_notifications": [],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -7259,7 +7255,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a741b8fcfb73995c70c5104": "2026-08-08T17:50:51.131395",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a743b874f5af325d101d9a4": "2026-08-08T17:50:50.367719",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a74654ebacf6023ca08614e": "2026-08-08T17:50:49.373371",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-10-01T14:31:01.049005",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-10-01T19:52:09.671431",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a967223b3a8b0ae5f08bc14": "2026-09-02T06:18:39.621066",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a9122baddd9a79b7009924a": "2026-09-02T06:18:41.088712",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a8be93a5637d08fc707645d": "2026-09-02T01:19:55.493675",
@@ -7355,7 +7351,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba2d5c3b6cb517fd063d98": "2026-09-30T11:23:52.250085",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba22e1c5b151e92c09373b": "2026-09-30T05:43:06.297434",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abb9f2d44519474c2014e73": "2026-10-01T00:46:44.483824",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-01T14:30:59.506540",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-01T19:52:02.109335",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcdb33537fdf268904726c": "2026-10-01T07:04:01.679748",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcfb044fd9f3500d037e44": "2026-10-01T07:04:00.592114",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abdfa7d367ff638e7060f0f": "2026-10-01T14:30:52.031025",
@@ -7368,8 +7364,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 0,
-      "last_fail_reason": null
+      "fail_count": 1,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7f4299eeec10>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
