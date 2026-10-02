@@ -16,11 +16,15 @@ logger = logging.getLogger("website_tracker")
 
 def fetch_url_with_retries(url, headers, timeout=30, max_retries=3, backoff_factor=2, verify=True):
     """
-    Fetches a URL using requests with exponential backoff retries for transient errors.
+    Fetches a URL using requests with backoff retries for transient errors.
     Supports single timeout number or (connect_timeout, read_timeout) tuple.
     """
     last_exception = None
-    req_timeout = (timeout, timeout + 15) if isinstance(timeout, (int, float)) else timeout
+    # For single number timeouts, allow 30s connection window and 45s read window
+    if isinstance(timeout, (int, float)):
+        req_timeout = (max(timeout, 25), max(timeout + 15, 35))
+    else:
+        req_timeout = timeout
 
     for attempt in range(1, max_retries + 1):
         try:
@@ -31,14 +35,15 @@ def fetch_url_with_retries(url, headers, timeout=30, max_retries=3, backoff_fact
             # Treat 5xx server errors as transient and retry
             if response.status_code >= 500:
                 logger.warning(f"Server error {response.status_code} on {url}. Retrying...")
-                time.sleep(backoff_factor ** attempt)
+                time.sleep(attempt * 3)
                 continue
                 
             return response
         except (requests.exceptions.RequestException, requests.exceptions.Timeout) as e:
             logger.warning(f"Network error on {url}: {e}. Retrying...")
             last_exception = e
-            time.sleep(backoff_factor ** attempt)
+            # Linear wait (3s, 6s, 9s, 12s) to avoid long delays on scheduled runs
+            time.sleep(attempt * 3)
             
     logger.error(f"Failed to fetch {url} after {max_retries} attempts.")
     if last_exception:
