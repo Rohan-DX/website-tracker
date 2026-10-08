@@ -538,6 +538,28 @@ def main():
                                 parsed_details = parse_ugc_net_pdf(temp_pdf_path, title, pdf_url, item.get("notice_url"))
                         except Exception as e:
                             logger.error(f"Error parsing PDF fields: {e}")
+
+                    # Date-based safeguard: ignore any notice explicitly dated > 60 days in the past
+                    notice_date_str = parsed_details.get("date") or item.get("ref_date")
+                    if notice_date_str and notice_date_str != "N/A":
+                        try:
+                            # Try parsing YYYY-MM-DD
+                            p_parts = [int(p) for p in re.findall(r'\d+', notice_date_str)]
+                            if len(p_parts) >= 3:
+                                # Could be YYYY-MM-DD or DD-MM-YYYY
+                                if p_parts[0] > 1900:
+                                    n_dt = datetime(p_parts[0], p_parts[1], p_parts[2])
+                                else:
+                                    n_dt = datetime(p_parts[2], p_parts[1], p_parts[0])
+                                if (datetime.now() - n_dt).days > 60:
+                                    logger.info(f"Skipping notice '{title}' dated {notice_date_str} (> 60 days old)")
+                                    # Still record as seen, but don't alert or queue for summary
+                                    if "pending_summary_notifications" in state and notif_hash in state["pending_summary_notifications"]:
+                                        state["pending_summary_notifications"].remove(notif_hash)
+                                    state["seen_notifications"][notif_hash]["sent_in_summary"] = True
+                                    continue
+                        except Exception as e:
+                            logger.debug(f"Could not validate notice date '{notice_date_str}': {e}")
                 finally:
                     # Clean up temp file regardless of outcomes, errors, or loop continues
                     if temp_pdf_path and os.path.exists(temp_pdf_path):

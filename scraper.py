@@ -222,6 +222,22 @@ class WebScraper:
                 if "bulletin" in text.lower() or "archive" in text.lower() or "sitemap" in href.lower():
                     continue
                     
+                # Check upload date from URL path if present (e.g. /uploads/YYYY/MM/)
+                # Ignore notices published more than 60 days ago
+                m_date = re.search(r'/uploads/(\d{4})/(\d{2})/', href)
+                if m_date:
+                    try:
+                        upload_year = int(m_date.group(1))
+                        upload_month = int(m_date.group(2))
+                        # First day of upload month
+                        upload_dt = datetime(upload_year, upload_month, 1)
+                        # If upload month is more than 60 days in the past, skip it
+                        if (datetime.now() - upload_dt).days > 60:
+                            logger.info(f"Skipping old UGC NET notice '{text}' (Uploaded {upload_year}-{upload_month:02d})")
+                            continue
+                    except Exception as e:
+                        logger.debug(f"Error checking upload date for {href}: {e}")
+
                 absolute_url = urljoin(url, href)
                 notices.append({
                     "title": text,
