@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-10-08T15:42:55.720160",
+  "last_run": "2026-10-08T16:20:50.435561",
   "daily_summary_sent_date": "2026-10-07",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -7204,6 +7204,13 @@
       "timestamp": "2026-10-08T15:42:52.369401",
       "site_id": "ugc_net_notices",
       "sent_in_summary": false
+    },
+    "4303d2705e7cc8beb0bc97abbb37aa4cd27d6b9e9f7a7ceef3d7f37d05145823": {
+      "title": "Opening of the online registration portal for submission of Online Application Form for UGC-NET December 2026 examination \u2013 reg",
+      "link": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/10/202610081928217016.pdf",
+      "timestamp": "2026-10-08T16:20:45.865434",
+      "site_id": "ugc_net_notices",
+      "sent_in_summary": false
     }
   },
   "pending_summary_notifications": [
@@ -7212,7 +7219,8 @@
     "65b2602579cc3c7177237421aa8238a992cba0d9bdc4da629cdbb15d4c03e109",
     "add0d934f980dc49b2a5d27ad14dd2741ed8ab10e332eb69b8e4d497a3e39c26",
     "4e3f62831326f7dd851bfcba0bfe5dbdb12ba15d6fa7ce06777271320d59620c",
-    "9728d3ca8dd66b8b6f473aca976e46d6e19475f55a3fdd4ccffa91ad1dcc4324"
+    "9728d3ca8dd66b8b6f473aca976e46d6e19475f55a3fdd4ccffa91ad1dcc4324",
+    "4303d2705e7cc8beb0bc97abbb37aa4cd27d6b9e9f7a7ceef3d7f37d05145823"
   ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
@@ -7304,7 +7312,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a741b8fcfb73995c70c5104": "2026-08-08T17:50:51.131395",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a743b874f5af325d101d9a4": "2026-08-08T17:50:50.367719",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a74654ebacf6023ca08614e": "2026-08-08T17:50:49.373371",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-10-08T15:39:19.505728",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-31082026": "2026-10-08T16:17:56.754977",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a967223b3a8b0ae5f08bc14": "2026-09-02T06:18:39.621066",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a9122baddd9a79b7009924a": "2026-09-02T06:18:41.088712",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a8be93a5637d08fc707645d": "2026-09-02T01:19:55.493675",
@@ -7400,7 +7408,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba2d5c3b6cb517fd063d98": "2026-09-30T11:23:52.250085",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba22e1c5b151e92c09373b": "2026-09-30T05:43:06.297434",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abb9f2d44519474c2014e73": "2026-10-01T00:46:44.483824",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-08T15:39:15.536243",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-08T16:17:55.091165",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcdb33537fdf268904726c": "2026-10-01T07:04:01.679748",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcfb044fd9f3500d037e44": "2026-10-01T07:04:00.592114",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abdfa7d367ff638e7060f0f": "2026-10-01T14:30:52.031025",
@@ -7413,8 +7421,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 34,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7f1ede801f90>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
+      "fail_count": 35,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7fc2ed5f6d10>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
