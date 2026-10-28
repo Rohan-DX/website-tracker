@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-10-28T08:11:44.604848",
+  "last_run": "2026-10-28T15:10:01.708996",
   "daily_summary_sent_date": "2026-10-27",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -7218,9 +7218,170 @@
       "timestamp": "2026-10-27T18:25:26.780194",
       "site_id": "ugc_net_notices",
       "sent_in_summary": true
+    },
+    "ff623823c96956626d5c5a58cfc5a08056132f330bfcd53a81bc69afed9544c8": {
+      "title": "2026 \u0d32\u0d46 \u0d2d\u0d30\u0d23\u0d2d\u0d3e\u0d37\u0d3e\u0d35\u0d3e\u0d30\u0d3e\u0d18\u0d4b\u0d37\u0d02-\u0d06\u0d18\u0d4b\u0d37 \u0d2a\u0d30\u0d3f\u0d2a\u0d3e\u0d1f\u0d3f\u0d15\u0d7e \u0d38\u0d02\u0d18\u0d1f\u0d3f\u0d2a\u0d4d\u0d2a\u0d3f\u0d15\u0d4d\u0d15\u0d41\u0d28\u0d4d\u0d28\u0d24\u0d3f\u0d28\u0d41\u0d33\u0d4d\u0d33 \u0d2e\u0d3e\u0d7c\u0d17\u0d28\u0d3f\u0d7c\u0d26\u0d4d\u0d26\u0d47\u0d36\u0d19\u0d4d\u0d19\u0d7e \u0d38\u0d02\u0d2c\u0d28\u0d4d\u0d27\u0d3f\u0d1a\u0d4d\u0d1a\u0d4d",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ae08c036dfbec4dd40a459e",
+      "timestamp": "2026-10-28T15:08:59.005326",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "a0bac85af71d89b2e2228ef14d972922be91c2a0f89b18363ff95d684d4b3a64": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) BOTANY FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf16b8524cf3c59c0455eb",
+      "timestamp": "2026-10-28T15:09:03.842762",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "b8e70afa96671405a347a0dd685b756c0839de9707bff654d3ca6b730761600b": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) HISTORY FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf161ac940434628019309",
+      "timestamp": "2026-10-28T15:09:07.231631",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "82d78a6c52dcf334e7ea655d5168a5c784399d60444b3be8c353e2b11cb5059d": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) POLITICAL SCIENCE FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf15973310892438047813",
+      "timestamp": "2026-10-28T15:09:10.348409",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "33b45715de1977b6fc48181dab153592150d816527fe2c4b54661296a9a1e67c": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) ECONOMICS FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf11aa506c867dc60ec0c2",
+      "timestamp": "2026-10-28T15:09:14.501653",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "d5dc7e727cd9d1878a8fbee65a0e47fd0f6a10cc65d90d0d5db45a3a869d5706": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) MALAYALAM FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf1a04331089243804783d",
+      "timestamp": "2026-10-28T15:09:17.461035",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "176dd224256d9db4b6b5e8dcc86a3a95f52fa1dfcc1e02cadc8290f15ad15053": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) COMPUTER SCIENCE FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf0fd393e354cc6b0dec15",
+      "timestamp": "2026-10-28T15:09:20.495127",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "e0828699e20ec7d3865dc4f10746ee090adec02a89c6d773ca372223f19e2f5f": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) ZOOLOGY FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf0f02309bda958e02f0e2",
+      "timestamp": "2026-10-28T15:09:24.005983",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "847afe2d5348041c133ff26bedab05fd5f0d44c34f819dbabc64795ffd44751c": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST (JR) MATHEMATICS FROM - HST,UPST/LPST, MIN.STAFF & LAB.ASST- POSTING ORDER REGARDING",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adf0e25b66d44f40c003361",
+      "timestamp": "2026-10-28T15:09:27.150769",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "1e3721058eac1b731ca36c348312ddccc6ab9a5130c76e5b9ad99982a84b0f92": {
+      "title": "HSST JR TO HSST PROMOTION 2026 - ZOOLOGY",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adc9a1ca634f819320f8e66",
+      "timestamp": "2026-10-28T15:09:30.359394",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "cadd9eb55e61b908f5afe690a15f3142405b7145403279a8db8deaeeae752c75": {
+      "title": "HSST JR TO HSST PROMOTION 2026 - SOCIOLOGY",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adc99de12131490e20b2d8e",
+      "timestamp": "2026-10-28T15:09:33.538841",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "1007a6191287fdded6f37d9e701b0cb2546e010a911ee5d291fe774b22752b83": {
+      "title": "HSST JR TO HSST PROMOTION 2026 - PHYSICS",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adc996e5b15a97e0e057b48",
+      "timestamp": "2026-10-28T15:09:35.977003",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "f3bc6d20cfdb3c8e1f6d215f7f4e7e5108ba83a56a965ab619ecc85c467b7750": {
+      "title": "HSST JR TO HSST PROMOTION 2026 - ARABIC",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adc98eeb72ce9cedb0c9835",
+      "timestamp": "2026-10-28T15:09:38.754308",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "6e4018ad19891cfa78afa123830f93ab7e2569606777c89f995f386335edf175": {
+      "title": "HSST JR TO HSST PROMOTION 2026 - GERMAN",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adc98a0b72ce9cedb0c9832",
+      "timestamp": "2026-10-28T15:09:41.463804",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "1109be8adb9216315c9f0fb023686723a03f17f5e9f9c4394646f4580888796b": {
+      "title": "BY TRANSFER APPOINTMENT TO HSST FROM HST, UPST/LPST, MINISTERIAL STAFF AND LAB ASSISTANT - SENIORITY LIST CORRECTION",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6adc3937e7baa1a4b9052922",
+      "timestamp": "2026-10-28T15:09:44.176743",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "dce8b2846a1663914c246bb14ba41f2ded3d57ae826f6d5689d38322509e6045": {
+      "title": "Select List-HSST(Jr) to HSST",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ad600d040066205cd0f876d",
+      "timestamp": "2026-10-28T15:09:46.761976",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "e0665b91e6762dc1385e5553bc87d9f00eeb9403acb67e07c63cc1bb99a85e62": {
+      "title": "PRINCIPAL TRANSFER 2026- 2027 - PROVISIONAL TRANSFER LIST - REG.",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ad371da1066d7523e0fa9a8",
+      "timestamp": "2026-10-28T15:09:50.207832",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "ede36fd5bfa0bd558cb33d9e858d7964929398614de238dd6750e1d6a43b5618": {
+      "title": "BY TRANSFER NJD APPOINTMENT - BOND CIRCULAR",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ad320a497c8d90e43039a59",
+      "timestamp": "2026-10-28T15:09:53.317660",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "5328751263516d1cf156fbfc18206df4af2db4e8932e580af437dc3715445d87": {
+      "title": "Circular - Regarding conduct of the HSE first Year IMP /Supplementary Examination.",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ad20e4996366ddd3d011287",
+      "timestamp": "2026-10-28T15:09:56.755947",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
+    },
+    "a922131508b4209cbcc67afafeb20d4c4f7099f33687dc332a4d64734315400e": {
+      "title": "Circular - Revised Schedule of the 1st year IMP/Supplementary Examination October 2026.",
+      "link": "https://www.hseportal.kerala.gov.in/hse/portal/icp/dow/6ad1e9e02754037949052519",
+      "timestamp": "2026-10-28T15:09:59.077213",
+      "site_id": "hse_kerala",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "ff623823c96956626d5c5a58cfc5a08056132f330bfcd53a81bc69afed9544c8",
+    "a0bac85af71d89b2e2228ef14d972922be91c2a0f89b18363ff95d684d4b3a64",
+    "b8e70afa96671405a347a0dd685b756c0839de9707bff654d3ca6b730761600b",
+    "82d78a6c52dcf334e7ea655d5168a5c784399d60444b3be8c353e2b11cb5059d",
+    "33b45715de1977b6fc48181dab153592150d816527fe2c4b54661296a9a1e67c",
+    "d5dc7e727cd9d1878a8fbee65a0e47fd0f6a10cc65d90d0d5db45a3a869d5706",
+    "176dd224256d9db4b6b5e8dcc86a3a95f52fa1dfcc1e02cadc8290f15ad15053",
+    "e0828699e20ec7d3865dc4f10746ee090adec02a89c6d773ca372223f19e2f5f",
+    "847afe2d5348041c133ff26bedab05fd5f0d44c34f819dbabc64795ffd44751c",
+    "1e3721058eac1b731ca36c348312ddccc6ab9a5130c76e5b9ad99982a84b0f92",
+    "cadd9eb55e61b908f5afe690a15f3142405b7145403279a8db8deaeeae752c75",
+    "1007a6191287fdded6f37d9e701b0cb2546e010a911ee5d291fe774b22752b83",
+    "f3bc6d20cfdb3c8e1f6d215f7f4e7e5108ba83a56a965ab619ecc85c467b7750",
+    "6e4018ad19891cfa78afa123830f93ab7e2569606777c89f995f386335edf175",
+    "1109be8adb9216315c9f0fb023686723a03f17f5e9f9c4394646f4580888796b",
+    "dce8b2846a1663914c246bb14ba41f2ded3d57ae826f6d5689d38322509e6045",
+    "e0665b91e6762dc1385e5553bc87d9f00eeb9403acb67e07c63cc1bb99a85e62",
+    "ede36fd5bfa0bd558cb33d9e858d7964929398614de238dd6750e1d6a43b5618",
+    "5328751263516d1cf156fbfc18206df4af2db4e8932e580af437dc3715445d87",
+    "a922131508b4209cbcc67afafeb20d4c4f7099f33687dc332a4d64734315400e"
+  ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -7407,12 +7568,32 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba2d5c3b6cb517fd063d98": "2026-09-30T11:23:52.250085",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba22e1c5b151e92c09373b": "2026-09-30T05:43:06.297434",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abb9f2d44519474c2014e73": "2026-10-01T00:46:44.483824",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-28T08:09:09.650883",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-28T15:08:40.177762",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcdb33537fdf268904726c": "2026-10-01T07:04:01.679748",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcfb044fd9f3500d037e44": "2026-10-01T07:04:00.592114",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abdfa7d367ff638e7060f0f": "2026-10-01T14:30:52.031025",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abe44cff8bbf91a910d3f95": "2026-10-01T14:30:50.074827",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abe3d9cc1b2cd4da3004d2c": "2026-10-01T14:30:51.298727"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abe3d9cc1b2cd4da3004d2c": "2026-10-01T14:30:51.298727",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae08be8f577e6e43306a31a": "2026-10-28T15:08:39.467245",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf16ad58464de01c000e50": "2026-10-28T15:08:40.467950",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf15fbdc229d72b10db523": "2026-10-28T15:08:41.585071",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf1581dc229d72b10db520": "2026-10-28T15:08:42.526480",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf119858464de01c000e3b": "2026-10-28T15:08:43.520790",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf10a8524cf3c59c0455d2": "2026-10-28T15:08:44.837259",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf0fc2b66d44f40c003368": "2026-10-28T15:08:45.887790",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf0eabb93eb6a03506ee42": "2026-10-28T15:08:46.679331",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adf0e0a82c32c430c087eb7": "2026-10-28T15:08:47.481138",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adc9a13cec63e2f5d03d399": "2026-10-28T15:08:48.438424",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adc99d5a10540428b0f2515": "2026-10-28T15:08:49.408502",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adc991c7f2e202e6c0c3c68": "2026-10-28T15:08:50.450102",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adc98e3a10540428b0f2510": "2026-10-28T15:08:51.242973",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adc9894cbd179004901782b": "2026-10-28T15:08:52.040742",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6adc3916b6b081854403af98": "2026-10-28T15:08:52.917322",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad600c14399c741ac01ca4a": "2026-10-28T15:08:53.899888",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad3719602cf8658620cc012": "2026-10-28T15:08:54.960373",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad3208e97c8d90e43039a57": "2026-10-28T15:08:55.919826",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad20e3c00c8c6116503278c": "2026-10-28T15:08:56.949858",
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad1e9c3688705571e0d0a31": "2026-10-28T15:08:57.984360"
   },
   "scraper_health": {
     "ugc_net_notices": {
@@ -7420,8 +7601,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 145,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x706410f03ed0>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=35)'))"
+      "fail_count": 0,
+      "last_fail_reason": null
     },
     "kpsc_notifications": {
       "fail_count": 0,
