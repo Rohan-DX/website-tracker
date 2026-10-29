@@ -20,9 +20,9 @@ def fetch_url_with_retries(url, headers, timeout=30, max_retries=3, backoff_fact
     Supports single timeout number or (connect_timeout, read_timeout) tuple.
     """
     last_exception = None
-    # For single number timeouts, allow 30s connection window and 45s read window
+    # For single number timeouts, allow connect window and read window
     if isinstance(timeout, (int, float)):
-        req_timeout = (max(timeout, 25), max(timeout + 15, 35))
+        req_timeout = (max(timeout, 35), max(timeout + 20, 50))
     else:
         req_timeout = timeout
 

@@ -444,7 +444,7 @@ def main():
             state["scraper_health"][site_id]["last_fail_reason"] = str(error)
             
             fail_count = state["scraper_health"][site_id]["fail_count"]
-            if fail_count == 3:
+            if fail_count == 5:
                 from telegram_bot import escape_html
                 alert_text = (
                     f"⚠️ <b>SCRAPER FAILURE WARNING</b>\n\n"
@@ -457,7 +457,7 @@ def main():
             continue
         else:
             previous_fail_count = state["scraper_health"][site_id]["fail_count"]
-            if previous_fail_count >= 3:
+            if previous_fail_count >= 5:
                 from telegram_bot import escape_html
                 recovery_text = (
                     f"✅ <b>SCRAPER RECOVERED</b>\n\n"
