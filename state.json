@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-10-30T09:52:01.231139",
+  "last_run": "2026-10-30T16:41:27.241597",
   "daily_summary_sent_date": "2026-10-29",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -7358,9 +7358,90 @@
       "timestamp": "2026-10-28T15:09:59.077213",
       "site_id": "hse_kerala",
       "sent_in_summary": true
+    },
+    "522e8000c7f68c6d767f78e74dcd06bd07fcc67f8cc1e19a46000c11f5f93e59": {
+      "title": "Laboratory Assistant (Dairy/CFP) (Part-I (Grl. Category)) - Kerala Co-operative Milk Marketing Federation Ltd. (Cat.No.162/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-162-26.pdf",
+      "timestamp": "2026-10-30T16:40:11.770185",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "8e0e2469aed9ddf239c2227c9c4ec1471decb5a0c5f2a8d78d7eb8a13357195a": {
+      "title": "Laboratory Assistant (Dairy/CFP) (Part-II (Society Category)-Kerala Co-operative Milk Marketing Federation Ltd.(Cat.No.163/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-163-26.pdf",
+      "timestamp": "2026-10-30T16:40:19.288631",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "8312c0384e5c151b0f965b71e318706503fbdbda25e265d03266979716fd9a2b": {
+      "title": "Attender (SR for ST only) - Travancore \u2013 Cochin Chemicals Limited (Cat.No.164/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-164-26.pdf",
+      "timestamp": "2026-10-30T16:40:29.359990",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "6c4b549fa61bfead392a946267914590856d1c19ccd69de33923c9e4152360dd": {
+      "title": "Assistant Professor in Cardiology (NCA-Muslim & LC/AI)- Medical Education (Cat.No.165&166/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-165-166-26.pdf",
+      "timestamp": "2026-10-30T16:40:37.144559",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "f21a249dbe56c97a0f9e0d47234483a8da9ba3f8439951fc0f54401a36f7106d": {
+      "title": "Assistant Professor in Pathology (II NCA-Dheevara) - Medical Education (Cat.No.167/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-167-26.pdf",
+      "timestamp": "2026-10-30T16:40:44.596089",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "36e66021ef014540563fd5871d49737e5aef730fa458f56631d7d76bbe46ccae": {
+      "title": "Assistant Professor in Cardiology (II NCA-SC) - Medical Education (Cat.No.168/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-168-26.pdf",
+      "timestamp": "2026-10-30T16:40:50.920879",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "e2f20461173fdfe71ed9f1aa7124030fb050cd014c9638f3f3ffd31f63c048af": {
+      "title": "Assistant Professor in Cardio Vascular and Thoracic Surgery (I NCA-Dheevara) - Medical Education (Cat.No.169/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-169-26.pdf",
+      "timestamp": "2026-10-30T16:40:57.874876",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "1affcb1a1e7756f221038cc37a0813bee5fe5cc112057a2ec10013736ce33425": {
+      "title": "CSR Technician Gr.II / Sterilisation Technician Gr.II (I NCA-SC & LC/AI) - Medical Education (Cat.No.170&171/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-170-171-26.pdf",
+      "timestamp": "2026-10-30T16:41:06.746255",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "95db741c86d50ffcc3444a790867547414bc1a0f2add6f5781eaf8c665c9c953": {
+      "title": "Police Constable (Trainee) (Armed Police Battalion) (I NCA-LC/AI) - Kerala Police (Cat.No.172/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-172-26.pdf",
+      "timestamp": "2026-10-30T16:41:13.018370",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "bcb0b774af8c6805c87aafacd20f20715159802768f453fc1baa22281ef43972": {
+      "title": "L D Typist/Clerk Typist/Typist Clerk (Ex-Servicemen Only) (II NCA-SC) - N.C.C./Sainik Welfare (Cat.No.173/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-10/noti-173-26.pdf",
+      "timestamp": "2026-10-30T16:41:19.199046",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "522e8000c7f68c6d767f78e74dcd06bd07fcc67f8cc1e19a46000c11f5f93e59",
+    "8e0e2469aed9ddf239c2227c9c4ec1471decb5a0c5f2a8d78d7eb8a13357195a",
+    "8312c0384e5c151b0f965b71e318706503fbdbda25e265d03266979716fd9a2b",
+    "6c4b549fa61bfead392a946267914590856d1c19ccd69de33923c9e4152360dd",
+    "f21a249dbe56c97a0f9e0d47234483a8da9ba3f8439951fc0f54401a36f7106d",
+    "36e66021ef014540563fd5871d49737e5aef730fa458f56631d7d76bbe46ccae",
+    "e2f20461173fdfe71ed9f1aa7124030fb050cd014c9638f3f3ffd31f63c048af",
+    "1affcb1a1e7756f221038cc37a0813bee5fe5cc112057a2ec10013736ce33425",
+    "95db741c86d50ffcc3444a790867547414bc1a0f2add6f5781eaf8c665c9c953",
+    "bcb0b774af8c6805c87aafacd20f20715159802768f453fc1baa22281ef43972"
+  ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -7547,7 +7628,7 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba2d5c3b6cb517fd063d98": "2026-09-30T11:23:52.250085",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6aba22e1c5b151e92c09373b": "2026-09-30T05:43:06.297434",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abb9f2d44519474c2014e73": "2026-10-01T00:46:44.483824",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-30T09:48:42.079392",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30092026": "2026-10-30T16:36:45.444310",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcdb33537fdf268904726c": "2026-10-01T07:04:01.679748",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abcfb044fd9f3500d037e44": "2026-10-01T07:04:00.592114",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6abdfa7d367ff638e7060f0f": "2026-10-01T14:30:52.031025",
@@ -7572,7 +7653,8 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad3719602cf8658620cc012": "2026-10-28T15:08:54.960373",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad3208e97c8d90e43039a57": "2026-10-28T15:08:55.919826",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad20e3c00c8c6116503278c": "2026-10-28T15:08:56.949858",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad1e9c3688705571e0d0a31": "2026-10-28T15:08:57.984360"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad1e9c3688705571e0d0a31": "2026-10-28T15:08:57.984360",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30102026": "2026-10-30T16:36:43.811603"
   },
   "scraper_health": {
     "ugc_net_notices": {
@@ -7580,8 +7662,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 9,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7d4468cf3bd0>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=45)'))"
+      "fail_count": 10,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x76b260550610>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=45)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
