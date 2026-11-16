@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-16T03:15:25.162189",
+  "last_run": "2026-11-16T11:41:23.185493",
   "daily_summary_sent_date": "2026-11-15",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -7484,9 +7484,146 @@
       "timestamp": "2026-11-02T19:34:51.720023",
       "site_id": "ugc_net_notices",
       "sent_in_summary": true
+    },
+    "5cf768cfd1dbb0429c7ddf3c136f8f5ccd3ad5ad75aec464d370aca83fc3edb3": {
+      "title": "Systems Manager - Kerala State Housing Board (Cat.No.175/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-175-26.pdf",
+      "timestamp": "2026-11-16T11:38:44.918552",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "444bc3f904433b715f18fd965afabd9f9d9f2dea68911481a7fe0f35f4034723": {
+      "title": "Divisional Accounts Officer (By Transfer) (In-service Quota) - Kerala State Electricity Board Ltd (Cat.No.176/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-176-26.pdf",
+      "timestamp": "2026-11-16T11:39:05.532438",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "0e3b9b7f2a130d627bc50c3d08885ba533930739335a66be9e1044e8dda830a9": {
+      "title": "Marketing Executive - Kerala Tourism Development Corporation Limited (Cat.No.177/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-177-26.pdf",
+      "timestamp": "2026-11-16T11:39:18.661579",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "e5db06b44f3cdd425576a1e07e0fe06da84551a07b5dfa113cbb72127b4729b8": {
+      "title": "Revenue Surveyor Gr.-II - Kerala State Housing Board (Cat.No.178/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-178-26.pdf",
+      "timestamp": "2026-11-16T11:39:24.068087",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "30c20ad6392f5f622cc79e19b115f4778294699a3fbe4345a9269993ca37b178": {
+      "title": "E.C.G. Technician Gr.II - Health Services (Cat.No.179/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-179-26.pdf",
+      "timestamp": "2026-11-16T11:39:30.017530",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "ec5008d2c5f31e240cce25ad65ec2d09404cae858f9ad10797fc3049727c6770": {
+      "title": "Palmgur Instructor - Kerala Khadi and Village Industries Board (Cat.No.180/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-180-26.pdf",
+      "timestamp": "2026-11-16T11:39:37.710513",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "5c6c65d37bd3ac6d95fc64a6779e62b07fafec076e54b7e068e2389e72598781": {
+      "title": "FIELD SUPERVISOR GR II - STATE FARMING CORPORATION OF KERALA LIMITED. (Cat.No.181/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-181-26.pdf",
+      "timestamp": "2026-11-16T11:39:43.197074",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "f7f30ce50f83b49deb5ded39bd4fd590811440bc9c4af358d56e091146499c8a": {
+      "title": "L.D Clerk - Travancore Sugars & Chemicals Limited (Cat.No.182/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-182-26.pdf",
+      "timestamp": "2026-11-16T11:39:49.037565",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "a3e7d6cd1ccabf303dc6b4c83e3c4489556736c96dbc1cd4cd0836296754a702": {
+      "title": "Saddler (Ex-Servicemen Only) - NCC (Cat.No.183/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-183-26.pdf",
+      "timestamp": "2026-11-16T11:39:54.285475",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "b3127eadc0e37cd48b68febc8359bfc10ae71a4e98e5e6cc0290acbc37b440f8": {
+      "title": "Assistant Motor Vehicle Inspector (SR for ST only) - Motor Vehicles Department (Cat.No.184/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-184-26.pdf",
+      "timestamp": "2026-11-16T11:40:08.182642",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "c66bd2e65b20bcea15f155b35ad7b9fb7adf81c048173f6fc5dda71ece0017fc": {
+      "title": "Computer Assistant Grade-II (SR for ST only) - Enquiry Commissioner and Special Judges Office (Cat.No.185/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-185-26.pdf",
+      "timestamp": "2026-11-16T11:40:14.243087",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "862ffd2e43229471a665abef0846f03a560c72f476cc602fffe5502d04be75b3": {
+      "title": "Assistant Professor in Pharmacology (II NCA-Dheevara & SCCC) - Medical Education (Cat.No.186&187/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-186%26187-26.pdf",
+      "timestamp": "2026-11-16T11:40:25.173948",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "17b66f5ef004a308cf420dd8451dac9566d0c1383cb752a15bd78d27d0b36436": {
+      "title": "Motor Transport Inspector (Technical) (III NCA-SC) - Police (Motor Transport Wing) Department (Cat.No.188/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-188-26.pdf",
+      "timestamp": "2026-11-16T11:40:32.325009",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "0ae9b643d7eca4de57e438f3f8a9d7aa59107e8a158c15446104cd95eb9e7af1": {
+      "title": "Blood Bank Technician (II NCA-E/B/T) - Health Services Department (Cat.No.189/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-189-26.pdf",
+      "timestamp": "2026-11-16T11:40:42.483359",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "4016efe7eb0df99ce633066d5717b5645a3330bc83ba7909995ddd0f57bd46ee": {
+      "title": "Mortuary Technician Gr.-II (II NCA-Muslim) - Health Services (Cat.No.190/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-190-26.pdf",
+      "timestamp": "2026-11-16T11:40:55.401553",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "32d1631588af13472caf622e5f7a68afdeb38edfe67fea61f3882147bb90f36d": {
+      "title": "Police Constable Driver/ Woman Police Constable Driver (I NCA-SC) - Kerala Police (Cat.No.191/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-191-26.pdf",
+      "timestamp": "2026-11-16T11:41:01.670524",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
+    },
+    "1039b102ba487b6fc905d0eecac262153ae89f462bd906cd7727b414382b908d": {
+      "title": "Electrician (III NCA-E/B/T) - Kerala State Film Development Corporation Limited. (Cat.No.192/2026)",
+      "link": "http://www.keralapsc.gov.in/sites/default/files/2026-11/noti-192-26.pdf",
+      "timestamp": "2026-11-16T11:41:11.960884",
+      "site_id": "kpsc_notifications",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "5cf768cfd1dbb0429c7ddf3c136f8f5ccd3ad5ad75aec464d370aca83fc3edb3",
+    "444bc3f904433b715f18fd965afabd9f9d9f2dea68911481a7fe0f35f4034723",
+    "0e3b9b7f2a130d627bc50c3d08885ba533930739335a66be9e1044e8dda830a9",
+    "e5db06b44f3cdd425576a1e07e0fe06da84551a07b5dfa113cbb72127b4729b8",
+    "30c20ad6392f5f622cc79e19b115f4778294699a3fbe4345a9269993ca37b178",
+    "ec5008d2c5f31e240cce25ad65ec2d09404cae858f9ad10797fc3049727c6770",
+    "5c6c65d37bd3ac6d95fc64a6779e62b07fafec076e54b7e068e2389e72598781",
+    "f7f30ce50f83b49deb5ded39bd4fd590811440bc9c4af358d56e091146499c8a",
+    "a3e7d6cd1ccabf303dc6b4c83e3c4489556736c96dbc1cd4cd0836296754a702",
+    "b3127eadc0e37cd48b68febc8359bfc10ae71a4e98e5e6cc0290acbc37b440f8",
+    "c66bd2e65b20bcea15f155b35ad7b9fb7adf81c048173f6fc5dda71ece0017fc",
+    "862ffd2e43229471a665abef0846f03a560c72f476cc602fffe5502d04be75b3",
+    "17b66f5ef004a308cf420dd8451dac9566d0c1383cb752a15bd78d27d0b36436",
+    "0ae9b643d7eca4de57e438f3f8a9d7aa59107e8a158c15446104cd95eb9e7af1",
+    "4016efe7eb0df99ce633066d5717b5645a3330bc83ba7909995ddd0f57bd46ee",
+    "32d1631588af13472caf622e5f7a68afdeb38edfe67fea61f3882147bb90f36d",
+    "1039b102ba487b6fc905d0eecac262153ae89f462bd906cd7727b414382b908d"
+  ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -7699,12 +7836,13 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad3208e97c8d90e43039a57": "2026-10-28T15:08:55.919826",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad20e3c00c8c6116503278c": "2026-10-28T15:08:56.949858",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad1e9c3688705571e0d0a31": "2026-10-28T15:08:57.984360",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30102026": "2026-11-16T03:11:56.756933",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30102026": "2026-11-16T11:35:25.959410",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae81b414d26da59560dbcba": "2026-11-02T09:11:05.920442",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae58611c6c0b8625c0fe060": "2026-11-02T09:11:07.252607",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae4823dd3004a38c60c135c": "2026-11-02T09:11:08.672753",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae2d663e43b94675c0e9e4c": "2026-11-02T09:11:10.101675",
-    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae2d4a3a1e36c06430784ce": "2026-11-02T09:11:11.159067"
+    "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae2d4a3a1e36c06430784ce": "2026-11-02T09:11:11.159067",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-16112026": "2026-11-16T11:35:20.719790"
   },
   "scraper_health": {
     "ugc_net_notices": {
@@ -7712,8 +7850,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 52,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x74799d286750>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=45)'))"
+      "fail_count": 53,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7ab53ff1d990>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=45)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
