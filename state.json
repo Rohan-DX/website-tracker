@@ -1,5 +1,5 @@
 {
-  "last_run": "2026-11-27T04:30:48.889032",
+  "last_run": "2026-11-27T14:16:55.566689",
   "daily_summary_sent_date": "2026-11-26",
   "seen_notifications": {
     "9cd918b7d890bbfb262f12ce08f0d018b0cbacf61ee099e1b48c5e4aadda8b41": {
@@ -7631,9 +7631,18 @@
       "timestamp": "2026-11-26T22:29:11.114057",
       "site_id": "ugc_net_notices",
       "sent_in_summary": true
+    },
+    "77c5ded7ce16a7eab9847a27d2083b69c68ad16aba3751b67b45d9971847a3fa": {
+      "title": "Opportunity for candidates allotted an Examination City outside their four preferences to select another Examination City \u2013 UGC-NET December 2026 \u2013 reg.",
+      "link": "https://cdnbbsr.s3waas.gov.in/s301eee509ee2f68dc6014898c309e86bf/uploads/2026/11/20261127999504939.pdf",
+      "timestamp": "2026-11-27T14:16:50.818849",
+      "site_id": "ugc_net_notices",
+      "sent_in_summary": false
     }
   },
-  "pending_summary_notifications": [],
+  "pending_summary_notifications": [
+    "77c5ded7ce16a7eab9847a27d2083b69c68ad16aba3751b67b45d9971847a3fa"
+  ],
   "processed_subpages": {
     "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30052026": "2026-07-31T07:39:30.626727",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6a32885766224a48870fad84": "2026-06-17T13:47:00.085035",
@@ -7846,13 +7855,13 @@
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad3208e97c8d90e43039a57": "2026-10-28T15:08:55.919826",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad20e3c00c8c6116503278c": "2026-10-28T15:08:56.949858",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ad1e9c3688705571e0d0a31": "2026-10-28T15:08:57.984360",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30102026": "2026-11-27T04:27:26.670525",
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-30102026": "2026-11-27T14:13:23.151580",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae81b414d26da59560dbcba": "2026-11-02T09:11:05.920442",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae58611c6c0b8625c0fe060": "2026-11-02T09:11:07.252607",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae4823dd3004a38c60c135c": "2026-11-02T09:11:08.672753",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae2d663e43b94675c0e9e4c": "2026-11-02T09:11:10.101675",
     "https://www.hseportal.kerala.gov.in/hse/public/icp/view/6ae2d4a3a1e36c06430784ce": "2026-11-02T09:11:11.159067",
-    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-16112026": "2026-11-27T04:27:25.402336"
+    "https://www.keralapsc.gov.in/extra-ordinary-gazette-date-16112026": "2026-11-27T14:13:22.203654"
   },
   "scraper_health": {
     "ugc_net_notices": {
@@ -7860,8 +7869,8 @@
       "last_fail_reason": null
     },
     "hse_kerala": {
-      "fail_count": 86,
-      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x762e00842fd0>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=45)'))"
+      "fail_count": 87,
+      "last_fail_reason": "HTTPSConnectionPool(host='www.hseportal.kerala.gov.in', port=443): Max retries exceeded with url: /hse/public/icp/index (Caused by ConnectTimeoutError(<HTTPSConnection(host='www.hseportal.kerala.gov.in', port=443) at 0x7086e4843210>, 'Connection to www.hseportal.kerala.gov.in timed out. (connect timeout=45)'))"
     },
     "kpsc_notifications": {
       "fail_count": 0,
